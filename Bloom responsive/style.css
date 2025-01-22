@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+/* Header Styles */
+header {
+    background-color: #0082e6;
+    color: #fff;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Section Styles */
+.section {
+    padding: 100px 20px 50px; /* Adjusted padding for sections with fixed header */
+    text-align: center;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+}
+
+.section ul li{
+    list-style: none;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.parent {
+    display: flex;
+    justify-content: center;
+}
+
+.child {
+    background-color: rgb(255, 255, 255);
+    color: white;
+    border: 3px solid #32a3f9;
+    width: 20%;
+    margin: 0 10px;
+    padding: 15px;
+    color: black;
+}
+
+.child>img {
+    width: 100%;
+}
+
+/* Form Styles */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+   background-color: #0082e6;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #2fa2f9;
+
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 601px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav .logo {
+        margin-bottom: 10px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    .section {
+        padding-top: 120px;
+    }
+    .parent {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .child {
+        border: 2px solid #32a3f9;
+        width: 100%;
+        margin: 5px 20px;
+        padding: 15px;
+        color: black;
+    }
+}

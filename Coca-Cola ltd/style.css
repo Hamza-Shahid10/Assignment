@@ -1,0 +1,30 @@
+
+body{
+    background-color: black;
+}
+
+.cont{
+    padding-top: 30px;
+    width: 50%;
+}
+
+.c1{
+    align-items: center;
+}
+
+h1{
+    color: white;
+}
+
+.likh{
+    text-align: left;
+}
+
+h3{
+    color: red;
+    text-shadow: 3px 3px 3px rgb(255, 127, 127,0.3);
+}
+
+p{
+    color: white;
+}

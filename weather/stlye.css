@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #222;
+}
+
+.card {
+    width: 90%;
+    max-width: 470px;
+    background: linear-gradient(135deg, #00feba, #5b548a);
+    color: #fff;
+    margin: 100px auto 0;
+    border-radius: 20px;
+    padding: 40px 35px;
+    text-align: center;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.search input {
+    border: 0;
+    outline: 0;
+    background-color: #ebfffc;
+    color: #555;
+    padding: 10px 25px;
+    height: 60px;
+    border-radius: 30px;
+    flex: 1;
+    margin-right: 16px;
+    font-size: 18px;
+}
+
+.search button {
+    border: 0;
+    outline: 0;
+    background-color: #ebfffc;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.search button img {
+    width: 16px;
+}
+
+.weather-icon {
+    width: 170px;
+    margin-top: 30px;
+}
+
+.weather h1 {
+    font-size: 80px;
+    font-weight: 500;
+}
+
+.weather h2 {
+    font-size: 45px;
+    font-weight: 400;
+    margin-top: -10px;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 50px;
+
+}
+
+.col {
+    display: flex;
+    align-items: center;
+    text-align: left;
+
+}
+
+.col img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.humidity,
+.wind {
+    font-size: 28px;
+    margin-top: -10px;
+}
+
+.weather {
+    display: none;
+}
+
+.error {
+    text-align: center;
+    /* margin-left: 10px; */
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+/* loader start */
+.pl {
+    display: block;
+    width: 9.375em;
+    height: 9.375em;
+}
+
+.pl__arrows,
+.pl__ring-rotate,
+.pl__ring-stroke,
+.pl__tick {
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.pl__arrows {
+    animation-name: arrows42;
+    transform: rotate(45deg);
+    transform-origin: 16px 52px;
+}
+
+.pl__ring-rotate,
+.pl__ring-stroke {
+    transform-origin: 80px 80px;
+}
+
+.pl__ring-rotate {
+    animation-name: ringRotate42;
+}
+
+.pl__ring-stroke {
+    animation-name: ringStroke42;
+    transform: rotate(-45deg);
+}
+
+.pl__tick {
+    animation-name: tick42;
+}
+
+.pl__tick:nth-child(2) {
+    animation-delay: -1.75s;
+}
+
+.pl__tick:nth-child(3) {
+    animation-delay: -1.5s;
+}
+
+.pl__tick:nth-child(4) {
+    animation-delay: -1.25s;
+}
+
+.pl__tick:nth-child(5) {
+    animation-delay: -1s;
+}
+
+.pl__tick:nth-child(6) {
+    animation-delay: -0.75s;
+}
+
+.pl__tick:nth-child(7) {
+    animation-delay: -0.5s;
+}
+
+.pl__tick:nth-child(8) {
+    animation-delay: -0.25s;
+}
+
+/* Animations */
+@keyframes arrows42 {
+    from {
+        transform: rotate(45deg);
+    }
+
+    to {
+        transform: rotate(405deg);
+    }
+}
+
+@keyframes ringRotate42 {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(720deg);
+    }
+}
+
+@keyframes ringStroke42 {
+
+    from,
+    to {
+        stroke-dashoffset: 452;
+        transform: rotate(-45deg);
+    }
+
+    50% {
+        stroke-dashoffset: 169.5;
+        transform: rotate(-180deg);
+    }
+}
+
+@keyframes tick42 {
+
+    from,
+    3%,
+    47%,
+    to {
+        stroke-dashoffset: -12;
+    }
+
+    14%,
+    36% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* loader end */
+/* responsive start */
+@media screen (min-width ; 500px) {
+    
+}
+/* responsive start */

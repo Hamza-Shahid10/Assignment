@@ -1,0 +1,106 @@
+/* ol{ */
+/* list-style-type: disc; */
+/* list-style: outside ; */
+/* /* list-style-type: upper-roman; */
+/* list-style-position: inside; */
+/* } */
+/* .abc{
+    background-color: aqua;
+    color: black;
+} */
+
+/* 
+table{
+    border-collapse: collapse;
+    font-size: xx-large;
+    background-color: black;
+    color: white;
+    border-spacing: 10px;
+    width: 70%;
+    padding: 5PX;            
+} */
+
+/* td:hover{
+    background-color: yellow;
+    transform: scale(1.5);
+    transition: 3s;
+} */
+
+/* th:hover{
+    background-color: yellow;
+} */
+
+/* 
+td,th{
+    padding: 3px;
+    text-align: center;
+} */
+/* 
+table,th,td{
+    border: 3px groove blue;
+} */
+
+#email {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/020/009/601/original/email-and-mail-icon-black-free-png.png');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 19px;
+
+}
+
+
+
+label {
+    text-align: center;
+    display: inline-block;
+    width: 100px;
+}
+
+p {
+    color: blue
+}
+
+#test {
+    color: green
+}
+
+.test-class {
+    color: gray
+}
+
+.container {
+    background-color: red;
+    width: 200px;
+    height: 200px;
+}
+
+/* Descendant Selector */
+.container .header {
+    background-color: gray;
+    width: 50px;
+    height: 50px;
+}
+
+/* Child Selector */
+/* .container > .header */
+
+.container>.footer {
+    background-color: lightgray;
+    width: 100px;
+    height: 100px;
+}
+
+/* Adjacent Sibling Selector */
+.center+.body {
+    color: yellow !important;
+}
+
+/* General Sibling Selector */
+.header~.body {
+    color: white;
+}
+
+.body ~ .center {
+    font-size: 26px;
+}
