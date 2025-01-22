@@ -1,0 +1,3 @@
+jab ham class row ke andr div ko koi bh class na de jab wo puri width lelega
+
+col-sm ka kia kaam hai mobile ke ilawa briwi devices 

@@ -1,0 +1,15 @@
+if flex direction is "column" justify-content play with vertical and align-items play with horizontal
+but if flex direction is "row" justify content and align-items is opposite as compare to "column"
+
+
+
+justify-content play with vertical in column
+align items play horizontal in column
+
+
+
+"display:flex;" tag is used for used flex box
+"flex-direction:row or column;" 
+
+
+ 
