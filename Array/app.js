@@ -10,7 +10,7 @@ const burgerMenu = document.querySelector('.burger-menu');
 
 
 
-// Q---1
+// Q---18
 // let students = new Array()
 
 // students[0] = 'Hamza Shahid'
@@ -22,7 +22,7 @@ const burgerMenu = document.querySelector('.burger-menu');
 //   </select></center>`)
 
 
-// Q---2
+// Q---17
 // let devices = new Array()
 
 // devices[0] = 'Computer'
@@ -42,7 +42,7 @@ const burgerMenu = document.querySelector('.burger-menu');
 //   </select></center>`
 // )
 
-// Q---3
+// Q---8
 // const fruits = ["Banana", "Orange", "Apple", "Mango"];
 
 // const fruits2 = fruits;
@@ -50,6 +50,22 @@ const burgerMenu = document.querySelector('.burger-menu');
 
 
 // document.write(`Score of ${fruits[2]} is ${fruits2[2]}`)
+
+
+// Q--2
+// let devices = new Array()
+
+// devices[0] = 'Computer'
+
+
+// Q--16
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+const fruits2 = fruits.join(" ")
+;
+
+
+document.write(fruits2)
 
 
 
