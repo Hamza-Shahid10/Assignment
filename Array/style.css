@@ -1,0 +1,116 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.responsive-header {
+  background-color: #1d73f5;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+}
+
+.responsive-header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.hero-section {
+  background-image: url('https://www.hdwallpapers.in/download/really_cool_landscape_wallpaper_4k_hd-3840x2160.jpg');
+  height: 60vh;
+  /* background-image: linear-gradient(to bottom, #333, #555); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-section h1 {
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px #797777;
+}
+
+.hero-section p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.hero-section button {
+  background-color: #20d1fd;
+  text-shadow: -1px 1px #969696;
+  border-radius: 16px;
+  color: #ffffff;
+  border: none;
+  padding: 1em 2em;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.hero-section button:hover {
+  background-color: #1d73f5;
+}
+.hero-content{
+  text-align: center;
+}
+.hero-image img{
+  width: 100%;
+}
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.burger-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .burger-menu {
+    display: block;
+    cursor: pointer;
+  }
+
+  .burger-menu .line1, .burger-menu .line2, .burger-menu .line3 {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links.show {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    width: 100%;
+    padding: 1em;
+  }
+}
+
