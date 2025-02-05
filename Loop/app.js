@@ -31,10 +31,19 @@
 
 
 
+// let initialStars = parseInt(prompt("Enter the initial number of stars:"));
+
+
+// for (let i = initialStars; i > 0; i--) {
+//     let stars = '*'.repeat(i);  // Create a string with i stars
+//     document.write(stars + "<br>");  // Print the string
+// }
+
+
 let initialStars = parseInt(prompt("Enter the initial number of stars:"));
 
 
-for (let i = initialStars; i > 0; i--) {
-    let stars = '*'.repeat(i);  // Create a string with i stars
+for (let i = 10; i > initialStars; i--) {
+    let stars = '*'.repeat(initialStars);  // Create a string with i stars
     document.write(stars + "<br>");  // Print the string
 }
