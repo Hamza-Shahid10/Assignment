@@ -100,3 +100,54 @@
 //     let stars = '*'.repeat(initialStars);  // Create a string with i stars
 //     document.write(stars + "<br>");  // Print the string
 // }
+
+
+
+
+// const arr = ['samsung','iphone','nokia','motorola','oneplus']
+// let user = prompt('enter your mobile device companay')
+// let check = false
+
+//   for(i=0;i < arr.length;i++){
+//       if(user == arr[i]){
+//         document.write(arr[i])
+//         check = true}
+// }
+
+
+// if(check == false){
+//   alert('tu h bhsrika')
+// } 
+
+
+// if(user == arr[1]){alert('iphone wale hoo')}
+
+
+
+
+// const arr = ['samsung','iphone','nokia','motorola','oneplus'
+
+// let Name = prompt('enter your name')
+// let eman = ''
+
+// for(let i = Name.length -1 ; i >= 0;i--){
+//   eman+=Name[i]
+// }
+
+
+// if(eman == Name){alert('word is palindrome')}
+// else{alert('word is not palindrome')}
+
+
+
+// program to find the factorial of a number
+
+// take input from the user
+const number = +prompt('Enter a positive integer:');
+let fact = 1;
+if (number > 0) {
+    for (i = 1; i <= number; i++) {
+        fact *= i;
+    }
+    document.write(`The factorial of ${number} is ${fact}.`);
+}
