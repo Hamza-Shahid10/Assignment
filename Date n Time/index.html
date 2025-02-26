@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date n Time</title>
+</head>
+<body>
+  <!-- <h1 class="red" id="red" onclick="myFunction()" >h1</h1> -->
+  
+    <script>
+//           let art = prompt("enter you color name")
+//           function myFunction() {
+//            document.getElementById("red").innerHTML = "I have changed!  " + art;
+// }   
+        let dat = new Date()
+        // // let hours = dat.getHours()
+        // month = dat.getMonth()
+        // let day = dat.getDay()
+        // let year = dat.getFullYear()
+        // // let ampm = hours >= 12? 'PM' : 'AM'
+        // // if(hours <= 12){console.log("AM HORHA H")}else{console.log("PM HORHA H")}
+        // // console.log(hours +" " + ampm)
+        // let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        // document.write(dat.getDate() + " " + months[month] + " " + year)
+        let tame = dat.getTime()
+        let dob = new Date(prompt("apni tareekh tw likho paidaish ki")).getTime()
+        let age = tame - dob
+        let my = age/(1000*60*60*24*365)
+        console.log("your age is " + Math.floor(my))
+
+
+
+    </script>  
+</body>
+</html>
