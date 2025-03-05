@@ -103,13 +103,57 @@
 
 // Q--18
 
-let march21 = new Date(2025,2,2).getDate()
-let today = new Date().getDate()
-let pass = march21-today
-document.write(pass)
+// let march21 = new Date(2025,2,2).getDate()
+// let today = new Date().getDate()
+// let pass = march21-today
+// document.write(pass)
+
+// let date = new Date()
+// document.write(`Current Date:${date}<br>Elapset millisecinds since january 1, 1970: ${date.getTime()}<br>Elapset minutes since january 1, 1970: ${date.getTime() / 1000}`)
 
 
+// let hour = new Date().getHours()
+// if (hour <= 11) {
+//     document.write("it's AM")
+// } else {
+//     document.write("it's PM")
+// }
+// let date = new Date("11 mar, 2024").getTime()
+// let date1 = new Date().getTime()
+// let finalDate = (date1 - date) / (1000 * 60 * 60 * 24)
+// document.write(`${Math.floor(finalDate)} days have passed since 1st ramdan, 2024`)
 
+
+// let date = new Date("5 dec, 2015")
+// let date1 = new Date().getTime()
+// document.write(`On refeference date ${date}, ${Math.floor((date1 - (date).getTime())/1000)} Seconds had passed dince begining of 2015`)
+
+
+// let date = new Date()
+// let hour = date.getHours()
+// date.setHours(hour - 1)
+// document.write(`Current Date: ${new Date()}<br>1 hour ago, it was ${date}`)
+
+
+// let date = new Date()
+// alert(`Current Date: ${date}\n100 year back, it was: ${new Date("march 1, 1925")}`)
+
+// let input = +prompt("Enter your age.")
+// let date = new Date().getFullYear()
+// document.write(`Your age is ${input}<br>Your birth year is ${date - input}`)
+
+
+// let name = "Muddasir Butt"
+// let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+// let currMonth = months[new Date().getMonth()]
+
+// let units = 410
+// let charges = 16
+// let late = 350
+// let net = units * charges
+// let gross = net + late
+
+// document.write(`Customer Name: <b>${name}</b><br>Current Month: <b>${currMonth}</b><br>Number of units: ${units}<br>Charges per unit: ${charges}<br><br>Net Amount Payable (within Due Date): ${net}<br>Late Payment Surcharge: ${late}<br>Gross Amount Payable (after Due Date): ${gross}`)
 
 
 
