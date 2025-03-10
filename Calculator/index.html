@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: linear-gradient(to bottom, rgb(178, 176, 176), rgb(36, 36, 37)) ;
+        }
+        .calculator {
+            width: 250px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        #inp {
+            width: 90%;
+            height: 50px;
+            font-size: 1.5em;
+            text-align: right;
+            padding: 10px;
+            border: none;
+            background: #222;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        button {
+            width: 100%;
+            height: 50px;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:active {
+            opacity: 0.7;
+        }
+        .operator {
+            background: orange;
+            color: white;
+        }
+        .clear {
+            background: red;
+            color: white;
+        }
+        .equal {
+            background: green;
+            color: white;
+        }
+        .on-off {
+            background: grey;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="inp" disabled>
+        <div class="buttons">
+            <button  disabled></button>
+            <button onclick="clearDisplay()">AC</button>
+            <button onclick="clrall()" class="clear">C</button>
+            <button id='abay' class="on-off" onclick="toggleCalculator()">OFF</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('/') " class="operator">÷</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('*')" class="operator">×</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('-')" class="operator">−</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculateResult()" class="equal">=</button>
+            <button onclick="appendToDisplay('+')" class="operator">+</button>
+        </div>
+    </div>
+
+    <script>
+        let isOn = false; // Calculator starts OFF
+
+    function toggleCalculator() {
+    isOn = !isOn;
+    let gg = document.getElementById('abay')
+    document.getElementById('inp').value = isOn ? '' : ''; // Clears display
+    document.getElementById('inp').disabled = !isOn;
+    if (!isOn) { 
+    document.getElementById('abay').style.backgroundColor = "red";
+    document.getElementById('abay').innerHTML = 'OFF'
+} else if (isOn){
+    document.getElementById('abay').style.backgroundColor = "blue";
+    document.getElementById('abay').innerHTML = 'ON'
+
+}
+}
+
+function appendToDisplay(value) {
+    if (isOn) {
+        document.getElementById('inp').value += value;
+    }
+}
+
+function clearDisplay() {
+    if (isOn) {
+        document.getElementById('inp').value = '';
+    }
+}
+
+function calculateResult() {
+    if (isOn) {
+        try {
+            document.getElementById('inp').value = eval(document.getElementById('inp').value);
+        } catch {
+            alert('Invalid Expression');
+            clearDisplay();
+        }
+    }
+}
+        function clrall(){
+            var getInp = document.getElementById('inp')
+            getInp.value = getInp.value.slice(0,-1)
+        }
+
+    </script>
+</body>
+</html>
