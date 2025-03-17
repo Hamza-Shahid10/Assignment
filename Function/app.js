@@ -122,15 +122,85 @@
 //   console.log("Area (Variable Arguments): " + area);
 // }
 
-// Q---9
-function dato(){
-  let a = prompt('Enter the first number: ');
-  // document.write(`yeh h ${a}`);
-  for (i = a.length; i >= 0; i--){
-        document.write(a[i] += '' )
+// Q---10
+// function dato(){
+//   let a = prompt('Enter the first number: ')
+//   let hh = ''
+//   // document.write(`yeh h ${a}`);
+//   for (i = a.length-1; i >= 0; i--){
+//     console.log(i, a[i])
+//     console.log(hh += a[i] )
+//       }
+//}
+
+// Q--11
+// function dato(str){
+//    let strr = str
+//    let slit = strr.split(' ')
+//    let final = []
+//     for (let i = 0; i < slit.length; i++) {
+//     final[i] = slit[i][0].toUpperCase() + slit[i].slice(1) 
+//     console.log("loop wala", final)
+//   }
+
+//    return final
+// }
+
+// console.log(dato("The quick brown fox jumps over the lazy dog"));
+
+// Q--12
+// function dato(str) {
+//   // Split the string into an array of words
+//   console.log(str)
+//   let strr = str
+//   const words = strr.split(' ')
+
+//   // Initialize the longest word variable
+//   let longestWord = '';
+
+//   // Loop through the words to find the longest one
+//   for (let i = 0; i < words.length; i++) {
+//       if (words[i].length > longestWord.length) {
+//           longestWord = words[i];
+//       }
+//   }
+
+//   // Return the longest word
+//   return longestWord;
+// }
+
+// // console.log(dato())
+// // Example usage:
+// console.log(dato("The quick brown fox jumps over the lazy dog"));
+// // Output: "jumps"
+
+
+// Q--13
+
+
+function dato(str) {
+  // Split the string into an array of words
+  console.log(str)
+  let words = str
+  let longestWord = '';
+  for (let i = 0; i < words.length; i++) {
+          if (words[i] == 'o') {
+              longestWord++
+          }
       }
+  return longestWord
 }
 
+console.log(dato(prompt('enter value')));
 
 
+
+
+// Q--14
+// console.log(`the circumference is ${circum(prompt('vhitar'))}`)
+// function circum(radius){
+// console.log(radius)
+// let area = 2 * (3.1 * radius)
+// return area
+// }
 
