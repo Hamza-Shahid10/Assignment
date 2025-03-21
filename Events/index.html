@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        .container{
+            height: 100vh;
+            background: #e7bbbb;
+            padding-top: 10rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            
+        }
+        /* .cont{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        } */
+        #inp{
+            text-align: center;
+            background: #000;
+            color: whitesmoke;
+            border: white;
+            border-radius: 8px;
+            width: 75vh;
+            height: 10vh;
+            font-size: larger;
+        }
+        /* .btns{
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            align-items: center;
+        } */
+        button{
+            padding: 5px;
+            width: 20vh;
+            height: 5vh;
+            background: #78b6fd;
+            border: none;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <a href="JavaScript:void(0)" onClick="var greet='hi'; alert(greet);">Click</a>
+
+    <input type="button" value="Click" onClick="alert('Hello world!');">
+    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" onMouseover="src='https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg'">
+     -->
+    <!-- <label for="">Email:</label><br>
+   <input type="text" size="30" id="inp" onmouseleave="this.style.backgroundColor='red';" onFocus="this.style.backgroundColor='yellow';" onBlur="this.style.backgroundColor='white';">
+    <button id="btn">CLick me</button> -->
+
+    <!-- anonymous -->
+
+    <div class="container">
+        <div class="cont" >
+        <input type="text" id="inp" disabled>
+        </div>
+   <br><br>
+    <div class="btns">
+        <button onclick="btnValue('9')" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';">9</button>
+        <button onclick="btnValue('8')" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';">8</button>
+        <button onclick="btnValue('7')"  onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';">7</button>
+        <button onclick="btnValue('-')" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';" >-</button>
+    </div>
+    <br>
+    <div class="btns">
+        <button onclick="btnValue('6')" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';" >6</button>
+        <button onclick="btnValue('5')" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';">5</button>
+        <button onclick="btnValue('4')" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';" >4</button>
+        <button onclick="btnValue('+')" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';" >+</button>
+    </div>
+    <br>
+    <div class="btns">
+        <button onclick="btnValue('3')" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';">3</button>
+        <button onclick="btnValue('2')" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';">2</button>
+        <button onclick="btnValue('1')" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';">1</button>
+        <button onclick="sum()" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';">=</button>
+    </div>
+    <br>
+    <div class="btns">
+        <button onclick="btnValue('/')" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';">/</button>
+        <button onclick="btnValue('*')" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';">*</button>
+        <button onclick="AC()" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';" >AC</button>
+        <button onclick="cler()" onfocus="this.style.backgroundColor='orangered';" onblur="this.style.backgroundColor='#78b6fd';">CL</button>
+    </div>
+</div>
+
+
+
+
+
+
+</body>
+<script>
+    // var getBtn = document.getElementById('btn')
+    // getBtn.addEventListener('click', function(){
+    //     var getInp = document.getElementById('inp')
+    //     getInp.value = 'kuch bh'
+    // })
+let getInp = document.getElementById('inp')
+
+function btnValue(num){
+    // console.log(num)
+    getInp.value += num
+}
+
+function sum(){
+    console.log(getInp.value)
+    getInp.value = eval(getInp.value)
+}
+
+function cler(){
+    getInp.value = getInp.value.slice(0,-1)
+}
+
+function AC(){
+    getInp.value = ''
+}
+</script>
+</html>
