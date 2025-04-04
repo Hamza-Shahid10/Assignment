@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting Paragraph</title>
+    <style>
+        .container{
+            background: whitesmoke;
+            width: 40%;
+        }
+        .pira{
+            font-size: large;
+            background-image: linear-gradient(to right, #98fbcb , #bfffed, #558b71);
+            color: rgb(43, 44, 44);
+            border-radius: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis cupiditate, eaque odit pariatur maiores rem necessitatibus corporis inventore. Repudiandae facilis accusantium, ex quibusdam cumque animi aperiam commodi nisi ullam laudantium.</p>
+    <p id="para"></p>
+    <a id="anc" onclick="read()" href="#">Read more</a>
+    <a id="anc2" style="display: none;" onclick="rode()" href="#">Read less</a> -->
+     <center>
+        <div class="container" id="div">
+            <input id="inp" type="text">
+            <button onclick="send()"> Send</button>
+        </div>
+    </center>
+    <script>
+
+        // let getPara = document.getElementById('para')
+        // let getAnc = document.getElementById('anc')
+        // let getAnc2 = document.getElementById('anc2')
+        
+        // function read(){
+        //     text = ' necessitatibus corporis inventore. Repudiandae facilis accusantium, ex quibusdam cumque animi aperiam commodi nisi ullam laudantium.'
+        //     getPara.innerHTML = text
+        //     getAnc.innerHTML = ''
+        //     getAnc2.style.display = "block"
+        // }
+
+        // function rode(){
+        //     getPara.innerHTML = ''
+        //     getAnc.innerHTML = 'Read more'
+        //     getAnc2.style.display = "none"
+            
+        // }
+ 
+        let getInp = document.getElementById('inp')
+        let getDiv = document.getElementById('div')
+        function send(){
+            let getPara = document.createElement('p')
+            getPara.className = 'pira'
+            getPara.innerHTML = getInp.value
+            getDiv.appendChild(getPara)
+            getInp.value = ''
+        }
+
+
+
+    </script>
+</body>
+</html>
