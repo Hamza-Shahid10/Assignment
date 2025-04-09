@@ -14,9 +14,10 @@
             background-image: linear-gradient(to right, #98fbcb , #bfffed, #558b71);
             color: rgb(43, 44, 44);
             border-radius: 1rem;
+            padding: 6px;
             list-style: none;
             margin-top: 2px;
-            width: 50%;
+            width: 60%;
         }
         button{
             border: none;
@@ -24,6 +25,12 @@
             background-color: #42684b;
             color: whitesmoke;
             padding: 5px;
+        }
+
+        li{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
     </style>
@@ -42,7 +49,7 @@
             <h1> To do List</h1>
             <input id="inp" placeholder="enter To do Task" type="text">
             <button onclick="send()"> Send</button>
-            <button onclick="delall()">delall</button>
+            <button style="background-color: red;" onclick="delall()">Delall</button>
             <ul id="list">
 
             </ul>
@@ -56,13 +63,29 @@
         function send(){
             let createLi = document.createElement('li')
             createLi.className = 'pira'
-            createLi.innerHTML = getInp.value + " " +`<button onclick="this.parentNode.remove()">Delete</button>`
+            createLi.innerHTML = getInp.value + " " +`<span><button onclick="this.parentNode.parentNode.remove()">Delete</button> <button onclick="edit(this)">Edit</button></span>`
             getUl.appendChild(createLi)
             getInp.value = ''
+        }
+        
+       
+            getInp.addEventListener('keydown', function(event) {
+        var key = event.keyCode || event.which; // For cross-browser compatibility
+        if (key === 13) {
+            send();
+        }
+    });
+
+        function edit(e){
+        console.log(e.parentNode.firstChild.textContent)
+        updatedValue = prompt('Enter Updated Value', e.parentNode.parentNode.firstChild.textContent)
+        e.parentNode.parentNode.firstChild.textContent = updatedValue
         }
         function delall(){
             getUl.innerHTML = '' 
         }
+
+
 
     </script>
 </body>
