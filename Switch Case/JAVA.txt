@@ -1,0 +1,229 @@
+REPEATING STRING:
+let arr = "hello world hello hamza"
+let trr = arr.split(' ')
+for (let i = 0; i < trr.length; i++ ){
+    console.log(trr[i])
+    if(trr[i] == 'hello'){
+        alert('arib paddo')
+    }
+}
+
+FIRST LETTER CAPITAL:
+let arr = prompt('enter your word')
+console.log(arr.toUpperCase())
+for (let i = 0; i < trr.length; i++ ){
+    console.log(trr[i][0].toUpperCase() + trr[i].slice(1))
+}
+
+PALINDROME:
+let str = prompt('enter your word')
+let newStr = '';
+for (let i = str.length-1; i >= 0; i-- ){
+    console.log(str[i])
+    newStr += str[i]    
+}
+console.log(newStr)
+
+SWTICH CASE:
+let dayOfWeek = prompt('Enter the first three letter of what day it is').toLowerCase()
+console.log(dayOfWeek)
+switch (dayOfWeek){
+    case 'tue':
+        alert("mangal h najim")
+        break;
+    case 'mon':
+        alert("peer h yr")
+        break;
+    case 'wed':
+        alert("budh h bhai tesra din agya")
+        break;
+    case 'thu':
+        alert("aj jumerat h arib ki barat h")
+        break;    
+    case 'fri':
+        alert("agya jumma, Jumme ki raat h")
+        break;
+ case 'sat':
+        alert("hafta kofta, apni raat ha")
+        break;
+ case 'sun':
+        alert("majdoro ki chutii")
+        break;
+
+    default :
+        alert('din likhne ko kaha h bhai')
+}
+
+TOSS:
+let tass = Math.ceil(Math.random()*2)
+function toss(tass){
+console.log(tass)
+    if(tass 
+
+== 2){
+        alert("Hat aya h")
+} else(
+        alert('Tail aya h')
+)}
+let chalo = confirm('toss krna h k nh')
+if(chalo){toss(tass)}
+
+ALPHABETICAL ORDER:
+function alphabet_order(str) {
+  return str.split('').sort().join('');
+}
+console.log(alphabet_order(prompt('enter your string')));
+
+WHICH OF THE WORD IS LONGEST IN STRING:
+//let str2 = 'web development course'
+let splitStr = str2.split(' ')
+let arrr = []
+for (let i = 0; i < splitStr.length; i++) {
+    arrr[i] = splitStr[i].length
+    console.log(splitStr[i].length, splitStr[i], arrr)
+}//
+//let str2 = 'web development course'
+let splitStr = str2.split(' ')
+for (let i = 0; i < splitStr.length; i++) {
+    console.log(splitStr[i].length, splitStr[i])
+    if(lnght <= splitStr[i].length ){
+         console.log(lnght = splitStr[i].length)
+    }
+}//
+//let str2 = 'web development course'
+let splitStr = str2.split(' ')
+let hogya = ''
+for (let i = 0; i < splitStr.length; i++) {
+    if(lnght <= splitStr[i].length ){
+         console.log(lnght = splitStr[i].length, hogya = splitStr[i])
+    }
+}//
+YAHA SE ASLI SHURU H:
+let str2 = 'web development course'
+let splitStr = str2.split(' ')
+let lnght = 0
+let hogya = ''
+for (let i = 0; i < splitStr.length; i++) {
+    if(lnght <= splitStr[i].length ){
+         console.log(lnght = splitStr[i].length, hogya = splitStr[i])
+    }
+} console.log(hogya)
+
+POWER FUNCTION
+let a = prompt('enter your number')
+let b = prompt('enter your second number')
+let d = a
+function power(a,b){
+    for (let i = 1; i < b; i++ ){
+        a *= d
+    }
+    console.log(a, b)
+}
+power(a,b)
+
+LEAPYEAR
+let leapYear = 1996
+let arrY = []
+function createLeapYear(){
+for (let i = 0; i < 11; i++ ){
+    // console.log(leapYear += 4)
+    leapYear += 4
+    arrY[i] = leapYear
+}
+return arrY}
+function chk(){
+    createLeapYear()
+    let userInp = +prompt('enter number')
+    for (let i = 0; i < arrY.length; i++ ){
+    if(userInp == arrY[i]){
+        alert('bhtreen')
+    }
+}
+}
+chk()
+
+
+AVERAGE AND PERCENTAGE
+function mainF(){
+    let si = 76
+    let ur = 43
+    let en = 47
+    function average(){
+        let avrg = (si + ur + en) / 3
+        return avrg
+    }
+    function percentage(){
+        let prcntg = (si + ur + en) / 200 * 100
+        return prcntg
+    }
+    console.log(average().toFixed(2), percentage().toFixed(2)+'%')    
+} mainF()
+
+SELF MADE INDEXoF
+let stR = "sadqah"
+let char = "h"
+function karacter(){
+    for(let i = 0 ; i < stR.length; i++){
+        if(stR[i] == char){
+        console.log(i)}
+    }
+}
+
+VOWELS
+let alfaz = prompt('enter a word')
+let ALFAZ = ''
+function vowels(){
+for (i = 0 ; i < alfaz.length;i++){
+    if(alfaz[i] !== 'e' && alfaz[i] !== 'a' && alfaz[i] !== 'u' && alfaz[i] !== 'i' && alfaz[i] !== 'o' ){
+        ALFAZ += alfaz[i]
+    }
+}console.log(alfaz, ALFAZ)
+} vowels()
+
+DOUBLE VOWELS
+function countConsecutiveVowels(text) {
+    const vowels = "aeiou";
+    let count = 0;
+    for (let i = 0; i < text.length - 1; i++) {
+        let char1 = text[i].toLowerCase();
+        let char2 = text[i + 1].toLowerCase();
+        switch (char1) {
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
+                if (vowels.includes(char2)) {
+                    count++;
+                }
+                break;
+        }
+    }
+
+    return count;
+}
+const sentence = "Pleases read this application and give me gratuity";
+const result = countConsecutiveVowels(sentence);
+console.log(`Number of consecutive vowel pairs: ${result}`);
+
+OVERTIME PAY
+function calculateOvertimePay(hoursWorked) {
+    const overtimeRate = 12; 
+    const regularHours = 40; 
+    if (hoursWorked > regularHours) {
+        const overtimeHours = hoursWorked - regularHours;
+        const overtimePay = overtimeHours * overtimeRate;
+        return overtimePay;
+    } else {
+        return 0; 
+    }
+}
+const hoursWorked = 50; // Example input, employee worked 50 hours
+const overtimePay = calculateOvertimePay(hoursWorked);
+console.log(`Overtime pay for ${hoursWorked} hours worked: Rs. ${overtimePay}`);
+
+
+
+https://github.com/Mohammad-Saad-Aly/SMIT-batch-9/blob/master/JavaScript/Js%20Assignments/39-44_SwitchStatements_While..DoWhile.pdf
+
+JavaScript/Js Assignments/39-44_SwitchStatements_While..DoWhile.pdf
