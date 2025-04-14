@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+<style>
+
+ body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h2 {
+      color: #ed0a0a;
+    }
+
+    .input-group {
+      margin-bottom: 10px;
+    }
+
+    input {
+      padding: 8px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #4acf6d;
+      color: white;
+      cursor: pointer;
+    }
+button:hover{
+transition: 0.7s;
+background-color: #3e734c;
+}
+    button.delete-btn {
+      background-color: #35addc;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background: #d7d3ac;
+      padding: 10px;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .total {
+      margin-top: 20px;
+      font-weight: bold;
+    } 
+</style>
+
+
+</style>
+<body>
+    <h2>Expense</h2>
+
+    <div class="input-group">
+      <input type="text" id="naam" placeholder="Enter name">
+      <input type="number" id="paise" placeholder="Enter amount">
+      <button onclick="addExpense()">Add Expense</button>
+      <button onclick="delet()" class="btn btn-danger">Delete All</button>
+    </div>
+  
+    <ul id="expenseList"></ul>
+  
+    <div class="total">Total Expense: $<span id="totalExpense">0</span></div>
+  
+
+
+
+<script src="app.js"></script>
+</body>
+</html>
