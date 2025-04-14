@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>target some elements by tagname</title>
+</head>
+<body>
+    
+    <center>
+    <div id="div">
+        <img width="100px" src="https://media.istockphoto.com/id/185206958/photo/light-bulb.jpg?s=612x612&w=0&k=20&c=uff31Cf5Qy0Rss2OBw7aOysvoDEVKJVk53PrLfzGpBI=" alt="">
+        <img width="100px" src="https://media.istockphoto.com/id/185206958/photo/light-bulb.jpg?s=612x612&w=0&k=20&c=uff31Cf5Qy0Rss2OBw7aOysvoDEVKJVk53PrLfzGpBI=" alt="">
+        <img width="100px" src="https://media.istockphoto.com/id/185206958/photo/light-bulb.jpg?s=612x612&w=0&k=20&c=uff31Cf5Qy0Rss2OBw7aOysvoDEVKJVk53PrLfzGpBI=" alt="">
+        <img width="100px" src="https://media.istockphoto.com/id/185206958/photo/light-bulb.jpg?s=612x612&w=0&k=20&c=uff31Cf5Qy0Rss2OBw7aOysvoDEVKJVk53PrLfzGpBI=" alt="">
+     <button onclick="imgChange()">Changeeeeee</button>
+    </div>
+    </center>
+    <script>
+        let getImgs = document.getElementsByTagName('img')
+        let div = document.getElementById('div')
+        function imgChange(){
+            for(i = 0; i < getImgs.length ; i += 2 ){
+            getImgs[i].src = "https://img.freepik.com/free-vector/realistic-light-bulb-with-electricity_23-2149129410.jpg"
+            }
+            console.log(div)
+            div.style.backgroundColor = 'red'
+        }
+
+        // setAttribute
+        // getAttribute
+        // hasAttribute
+
+    </script>
+</body>
+</html>
