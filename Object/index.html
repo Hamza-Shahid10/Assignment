@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Card</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
+</head>
+<body class="container">
+    <center>
+    <h1>E-Commerce webiste </h1>
+    <h2>Product Page</h2>
+    <div class="row" id="div"></div>
+    </center>
+<script>
+        // hasAttribut('') return boolean statement is attribute are present or not
+        // getAttribute return attribute value
+        // setAttribute has 2 parameters one name one value it add an attribute 
+        // document.createElement('p') create an element in html document but it has to append to a parent to be actual seen
+        // "text artifact" is a text node present in the html node with body and head it is also called white space and its a junk
+        // object can not be get or print easily
+        // for (var key in student){
+        //     document.write(student[key])
+        // es 5 javascript = ekmaScript
+        // constructor : constructor function first letter is always capital
+        // constructor function is to be made because it return an Object  
+        // } 
+        // function Students(id,name,sec,roll){
+        //     this.id = id,
+        //     this.name = name,
+        //     this.sec = sec,
+        //     this.roll = roll
+        // }
+
+        // var stud1 = new Students('01','Saad','black','319')
+        // console.log(stud1)
+        
+        function Cars(img,name,color,price){
+            this.img = img,
+            this.name = name,
+            this.color = color,
+            this.price = price
+        }
+
+        var car1 = new Cars('https://images.unsplash.com/photo-1611859266238-4b98091d9d9b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmlzc2FuJTIwcjM1JTIwZ3RyfGVufDB8fDB8fHww','Nissan Gtr','Black','Rs: 40000000')
+        var car2 = new Cars('https://images.unsplash.com/photo-1611859266238-4b98091d9d9b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmlzc2FuJTIwcjM1JTIwZ3RyfGVufDB8fDB8fHww','Nissan Gtr','Black','Rs: 40000000')
+        var car3 = new Cars('https://images.unsplash.com/photo-1611859266238-4b98091d9d9b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmlzc2FuJTIwcjM1JTIwZ3RyfGVufDB8fDB8fHww','Nissan Gtr','Black','Rs: 40000000')
+        var car4 = new Cars('https://images.unsplash.com/photo-1611859266238-4b98091d9d9b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmlzc2FuJTIwcjM1JTIwZ3RyfGVufDB8fDB8fHww','Nissan Gtr','Black','Rs: 40000000')
+        
+        console.log(Cars)
+        getDiv = document.getElementById('div')
+        for (let key in car1){
+        getDiv.innerHTML = `<div class="card" style="width: 18rem;">
+        <img src=${car1.img} class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${car1.name}</h5>
+          <p class="card-text">${car1.color}</p>
+          <p class="card-text">${car1["price"]}</p>
+          <a href="#" class="btn btn-primary">Add to cart</a>
+        </div>
+        </div>`}
+
+        for (let key in car2){
+        getDiv.innerHTML = `<div class="card" style="width: 18rem;">
+        <img src=${car2.img} class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${car2.name}</h5>
+          <p class="card-text">${car2.color}</p>
+          <p class="card-text">${car2["price"]}</p>
+          <a href="#" class="btn btn-primary">Add to cart</a>
+        </div>
+        </div>`}
+
+
+    </script>
+</body>
+</html>
