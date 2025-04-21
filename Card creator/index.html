@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vehicle Card Creator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fa;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto 40px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border 0.3s;
+    }
+
+    input:focus {
+      border-color: #4285f4;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #357ae8;
+    }
+
+    #cardsContainer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+      width: 300px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #222;
+    }
+
+    .card p {
+      margin: 6px 0;
+      color: #555;
+    }
+    
+  .card-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .card-buttons button {
+    flex: 1;
+    margin: 5px 5px 0 0;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: background 0.3s;
+  }
+  
+  .edit-btn {
+    background-color: #ffa500;
+  }
+  
+  .edit-btn:hover {
+    background-color: #e59400;
+  }
+  
+  .delete-btn {
+    background-color: #e74c3c;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c0392b;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Vehicle Card Creator</h1>
+
+  <div class="form-container">
+    <input type="text" id="name" placeholder="Name">
+    <input type="number" id="price" placeholder="Price">
+    <input type="number" id="model" placeholder="Model">
+    <input type="text" id="address" placeholder="Address">
+    <input type="number" id="kmDriven" placeholder="Km Driven">
+    <input type="text" id="imageUrl" placeholder="Image URL">
+    <button onclick="createCard()">Create</button>
+  </div>
+
+  <div id="cardsContainer"></div>
+
+  <script>
+    function createCard() {
+      const name = document.getElementById('name').value;
+      const price = document.getElementById('price').value;
+      const model = document.getElementById('model').value;
+      const address = document.getElementById('address').value;
+      const kmDriven = document.getElementById('kmDriven').value;
+      const imageUrl = document.getElementById('imageUrl').value;
+  
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h2>${name}</h2>
+        <p><strong>Price:</strong> ${price}</p>
+        <p><strong>Model:</strong> ${model}</p>
+        <p><strong>Address:</strong> ${address}</p>
+        <p><strong>Km Driven:</strong> ${kmDriven}</p>
+        <img src="${imageUrl}" alt="Vehicle Image">
+        <div class="card-buttons">
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
+        </div>
+      `;
+  
+      // Delete functionality
+      card.querySelector('.delete-btn').onclick = () => {
+        card.remove();
+      };
+  
+      // Edit functionality
+      card.querySelector('.edit-btn').onclick = () => {
+        document.getElementById('name').value = name;
+        document.getElementById('price').value = price;
+        document.getElementById('model').value = model;
+        document.getElementById('address').value = address;
+        document.getElementById('kmDriven').value = kmDriven;
+        document.getElementById('imageUrl').value = imageUrl;
+        card.remove(); // Remove current card so it can be recreated with updated info
+      };
+  
+      document.getElementById('cardsContainer').appendChild(card);
+  
+      // Clear form after creation
+      document.querySelectorAll('.form-container input').forEach(input => input.value = '');
+    }
+  </script>
+  
+
+</body>
+</html>
