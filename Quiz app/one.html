@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Quiz App</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #982483, #ff7aef);
+
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .quiz-container {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 30px;
+      
+    }
+    .question {
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .options {
+      margin-bottom: 20px;
+      border-radius: 30px; 
+      background: linear-gradient(to right, #ebe5ea, #552da7); 
+    }
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 5px 0;
+      padding: 10px;
+      cursor: pointer;
+      align-items: center;
+      text-align: center;
+    }
+    .result {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+
+    }
+    .btn{
+      background-color:rgb(247, 184, 246); /* Green */
+      color: block;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+  
+  </style>
+</head>
+<body>
+  <h4>Countdown Timer</h4>
+  <div id="timer">10</div> 
+
+  <div class="quiz-container">
+  
+    <div id="quiz">
+      <div class="question" id="questionText"></div>
+      <div class="options" id="optionsContainer"></div>
+      <button class="btn" onclick="nextQuestion()">Next</button>
+
+    </div>
+    <div class="result" id="result" style="display: none;"></div>
+    <button class="btn" onclick="rel()">Reloed</button>
+  </div>
+  
+  <script>
+    const questions = [
+      {
+        question: "What is the capital of France?",
+        options: ["Berlin", "Madrid", "Paris", "Rome"],
+        correct: 2
+      },
+      {
+        question: "Which planet is known as the Red Planet?",
+        options: ["Earth", "Mars", "Jupiter", "Venus"],
+        correct: 1
+      },
+      {
+        question: "What is 5 + 3?",
+        options: ["5", "8", "10", "15"],
+        correct: 1
+      },
+      {
+        question: "What is 8 + 3?",
+        options: ["5", "11", "10", "15"],
+        correct: 1
+      },
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let selectedOption = null;
+
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById('questionText').textContent = q.question;
+
+      const optionsContainer = document.getElementById('optionsContainer');
+      optionsContainer.innerHTML = '';
+      q.options.forEach((option, index) => {
+        const btn = document.createElement('button');
+        btn.textContent = option;
+        btn.onclick = () => {
+          selectedOption = index;
+          document.querySelectorAll('.options button').forEach(b => b.style.backgroundColor = '');
+          btn.style.backgroundColor = '#d3d3d3';
+        };
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function nextQuestion() {
+      if (selectedOption === null) {
+        alert("Please select an option before proceeding.");
+        return;
+      }
+     
+       if (selectedOption === questions[currentQuestion].correct) {
+        score++;
+      }
+
+      currentQuestion++;
+      selectedOption = null;
+
+      if (currentQuestion < questions.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function rel(){ 
+     setTimeout(function(){
+    location.reload();
+  }, 1000); // Refreshes the page after 5 seconds
+}
+
+    function showResult() {
+      document.getElementById('quiz').style.display = 'none';
+      const resultText = `You scored ${score} out of ${questions.length}!`;
+      document.getElementById('result').textContent = resultText;
+      document.getElementById('result').style.display = 'block';
+    }
+
+    loadQuestion();
+    
+    let timeLeft = 10; // seconds
+    const timerElement = document.getElementById('timer');
+
+    const countdown = setInterval(() => {
+      timeLeft--;
+      timerElement.textContent = timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        timerElement.textContent = setTimeout(function(){
+    location.reload();
+  }, 1000);;
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
+
+
+    
