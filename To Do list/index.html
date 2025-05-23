@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do List</title>
     <style>
-        .container{
+        .container {
             background: whitesmoke;
             width: 40%;
         }
-        .pira{
+
+        .pira {
             font-size: large;
-            background-image: linear-gradient(to right, #98fbcb , #bfffed, #558b71);
+            background-image: linear-gradient(to right, #98fbcb, #bfffed, #558b71);
             color: rgb(43, 44, 44);
             border-radius: 1rem;
             padding: 6px;
@@ -19,7 +21,8 @@
             margin-top: 2px;
             width: 60%;
         }
-        button{
+
+        button {
             border: none;
             border-radius: 3px;
             background-color: #42684b;
@@ -27,27 +30,31 @@
             padding: 5px;
         }
 
-        li{
+        .input {
+            width: 60%;
+            padding: 5px;
+            border-radius: 3px;
+            border: 1px solid #42684b;
+        }
+
+        li {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
     </style>
 </head>
+
 <body>
-
-
-
     <!-- CRUD operations 
     C = Create
     R = Read
     U = Update
     D = Delete -->
-     <center>
+    <center>
         <div class="container" id="div">
             <h1> To do List</h1>
-            <input id="inp" placeholder="enter To do Task" type="text">
+            <input class="input" id="inp" placeholder="enter To do Task" type="text">
             <button onclick="send()"> Send</button>
             <button style="background-color: red;" onclick="delall()">Delall</button>
             <ul id="list">
@@ -56,37 +63,89 @@
         </div>
     </center>
     <script>
-
         let getInp = document.getElementById('inp')
         let getDiv = document.getElementById('div')
         let getUl = document.getElementById('list')
-        function send(){
-            let createLi = document.createElement('li')
-            createLi.className = 'pira'
-            createLi.innerHTML = getInp.value + " " +`<span><button onclick="this.parentNode.parentNode.remove()">Delete</button> <button onclick="edit(this)">Edit</button></span>`
-            getUl.appendChild(createLi)
-            getInp.value = ''
+        // function send() {
+        //     const taskList = JSON.parse(localStorage.getItem('task')) || [];
+        //     const taskobj = {
+        //         task: getInp.value,
+        //         status: false
+        //     }
+        //     let createLi = document.createElement('li')
+        //     createLi.className = 'pira'
+        //     taskList.map((item) => {
+        //         if (item.task !== getInp.value) {
+        //             createLi.innerHTML = getInp.value + " " + `<span><button onclick='delet(this)'>Delete</button> <button onclick="edit(this)">Edit</button></span>`
+        //             getUl.appendChild(createLi)
+        //         } else {
+        //             alert('Task already exists')
+        //         }
+        //     })
+        // taskList.push(taskobj)
+        // localStorage.setItem('task', JSON.stringify(taskList));
+        // getInp.value = ''
+        // }
+            function send() {
+    const taskList = JSON.parse(localStorage.getItem('task')) || [];
+    const newTask = getInp.value.trim();
+    const isDuplicate = taskList.some(item => item.task === newTask);
+
+    if (isDuplicate) {
+        alert('Task already exists');
+        return;
+    }
+    const taskObj = {
+        task: newTask,
+        status: false
+    };
+    taskList.push(taskObj);
+    localStorage.setItem('task', JSON.stringify(taskList));
+    const createLi = document.createElement('li');
+    createLi.className = 'pira';
+    createLi.innerHTML = `${newTask} <span><button onclick='delet(this)'>Delete</button> <button onclick="edit(this)">Edit</button></span>`;
+    getUl.appendChild(createLi);
+    getInp.value = '';
+}
+
+
+        getInp.addEventListener('keydown', function (event) {
+            var key = event.keyCode || event.which; // For cross-browser compatibility
+            if (key === 13) {
+                send();
+            }
+        });
+
+        function delet(e) {
+            const taskName = e.parentNode.parentNode.firstChild.textContent.trim();
+            console.log(taskName);
+            e.parentNode.parentNode.remove();
+            let taskList = JSON.parse(localStorage.getItem('task')) || [];
+            taskList = taskList.filter(item => item.task !== taskName);
+            localStorage.setItem('task', JSON.stringify(taskList));
         }
-        
-       
-            getInp.addEventListener('keydown', function(event) {
-        var key = event.keyCode || event.which; // For cross-browser compatibility
-        if (key === 13) {
-            send();
+
+
+        function edit(e) {
+            console.log(e.parentNode.firstChild.textContent)
+            updatedValue = prompt('Enter Updated Value', e.parentNode.parentNode.firstChild.textContent)
+            e.parentNode.parentNode.firstChild.textContent = updatedValue
         }
+        function delall() {
+            getUl.innerHTML = ''
+        }
+        function loadTasks() {
+            const taskList = JSON.parse(localStorage.getItem('task')) || [];
+        taskList.forEach(item => {
+        const createLi = document.createElement('li');
+        createLi.className = 'pira';
+        createLi.innerHTML = `${item.task} <span><button onclick='delet(this)'>Delete</button> <button onclick="edit(this)">Edit</button></span>`;
+        getUl.appendChild(createLi);
     });
-
-        function edit(e){
-        console.log(e.parentNode.firstChild.textContent)
-        updatedValue = prompt('Enter Updated Value', e.parentNode.parentNode.firstChild.textContent)
-        e.parentNode.parentNode.firstChild.textContent = updatedValue
-        }
-        function delall(){
-            getUl.innerHTML = '' 
-        }
-
-
+}
+        window.onload = loadTasks;
 
     </script>
 </body>
+
 </html>
