@@ -5,18 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .container {
-            background: whitesmoke;
+            font-family: "Outfit";
             width: 40%;
+        }
+        h1, label{
+            color: white;
+        }
+        label{
+            color: white;
+            font-size: x-large;
         }
 
         .pira {
             font-size: large;
-            background-image: linear-gradient(to right, #98fbcb, #bfffed, #558b71);
-            color: rgb(43, 44, 44);
+            background-color: #7256ec;;
+            /* background-image: linear-gradient(to right, #98fbcb, #bfffed, #558b71); */
+            color: rgb(255, 255, 255);
             border-radius: 1rem;
-            padding: 6px;
+            padding: 12px;
             list-style: none;
             margin-top: 2px;
             width: 60%;
@@ -24,42 +36,75 @@
 
         button {
             border: none;
-            border-radius: 3px;
+            border-radius: 8px;
             background-color: #42684b;
             color: whitesmoke;
-            padding: 5px;
+            padding: 12px;
         }
-
         .input {
             width: 60%;
-            padding: 5px;
+            padding: 12px;
             border-radius: 3px;
-            border: 1px solid #42684b;
+            background-color: #7256ec;
+            border: 1px solid #7256ec;
+            color: whitesmoke;
         }
 
         li {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-right: 10px;
+        }
+        .input-div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .bkg{
+            background-color: #670afd;
+        }
+        .fa-solid{
+            color: white;
+            font-size: large;
+        }
+        .submit{
+            background-color: whitesmoke;
+            color: rgb(49, 49, 49);
+            font-weight: bold;
+            font-family: "Outfit";
+            font-size: large;
+            
         }
     </style>
 </head>
 
-<body>
+<body class="bkg">
     <!-- CRUD operations 
     C = Create
     R = Read
     U = Update
     D = Delete -->
+    <br><br>
     <center>
-        <div class="container" id="div">
+        <div class="container bkg" id="div">
             <h1> To do List</h1>
-            <input class="input" id="inp" placeholder="enter To do Task" type="text">
-            <button onclick="send()"> Send</button>
-            <button style="background-color: red;" onclick="delall()">Delall</button>
+            <input type="text" id="search">
+            <button onclick="search()">search</button>
+            <i class="fa-thin fa-trash"></i>
             <ul id="list">
 
             </ul>
+            <div class="input-div">
+            <label for="input">Add a new todo </label>
+            <br>
+            <input class="input" id="inp" placeholder="I" type="text">
+            </div>
+            <br><br>
+              <button class="submit" onclick="send()"> Submit</button>
+            <button style="background-color: rgb(14, 13, 13);" onclick="delall()">Delete All</button>
+          
         </div>
     </center>
     <script>
@@ -69,6 +114,7 @@
         function send() {
             const taskList = JSON.parse(localStorage.getItem('task')) || [];
             const newTask = getInp.value.trim();
+            console.log(newTask.length)
             const isDuplicate = taskList.some(item => item.task === newTask);
             if (isDuplicate) {
                 alert('Task already exists');
@@ -83,7 +129,7 @@
             localStorage.setItem('task', JSON.stringify(taskList));
             const createLi = document.createElement('li');
             createLi.className = 'pira';
-            createLi.innerHTML = `${newTask} <span><button onclick='delet(this)'>Delete</button> <button onclick="edit(this)">Edit</button></span>`;
+            createLi.innerHTML = `${newTask} <span><button onclick='delet(this)'><i class="fa-solid fa-trash-can"></i></button> <button onclick="edit(this)">Edit</button></span>`;
             getUl.appendChild(createLi);
             getInp.value = '';
         }
@@ -135,11 +181,23 @@
             taskList.forEach(item => {
                 const createLi = document.createElement('li');
                 createLi.className = 'pira';
-                createLi.innerHTML = `${item.task} <span><button onclick='delet(this)'>Delete</button> <button onclick="edit(this)">Edit</button></span>`;
+                createLi.innerHTML = `${item.task} <span><button onclick='delet(this)'><i class="fa-solid fa-trash-can"></i></button> <button onclick="edit(this)">Edit</button></span>`;
                 getUl.appendChild(createLi);
             });
         }
         window.onload = loadTasks;
+
+        function search(){
+            getSearch = document.querySelector("#search").value
+            const taskList = JSON.parse(localStorage.getItem('task')) || [];
+            const filtered = taskList.filter(item => item.task == getSearch);
+            if(filtered.length !== 0){
+                alert("Item is on the list")
+            } else {
+                alert("item is not on the list")
+            }
+            
+        }
 
     </script>
 </body>
