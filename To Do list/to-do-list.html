@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .container {
+            font-family: "Outfit";
+            width: 40%;
+        }
+
+        h1,
+        label {
+            color: white;
+        }
+
+        label {
+            color: white;
+            font-size: x-large;
+        }
+
+        ul {
+  padding: 0;
+}
+
+.pira {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #7256ec;
+  color: white;
+  border-radius: 1rem;
+  padding: 12px;
+  margin-top: 2px;
+  list-style: none;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  gap: 10px;
+      word-break: break-word; /* IMPORTANT */
+
+}
+
+.task-text {
+  flex: 1;          
+  word-wrap: break-word;    
+  overflow-wrap: break-word;
+  white-space: normal;      
+}
+
+.task-actions {
+  display: flex;            
+  gap: 5px;                 
+  flex-shrink: 0;          
+}
+
+
+
+
+        button {
+            border: none;
+            border-radius: 8px;
+            background-color: #42684b;
+            color: whitesmoke;
+            padding: 12px;
+        }
+
+        .input {
+            width: 60%;
+            padding: 12px;
+            border-radius: 3px;
+            background-color: #7256ec;
+            border: 1px solid #7256ec;
+            color: whitesmoke;
+        }
+
+        .input-div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bkg {
+            background-color: #670afd;
+        }
+
+        .fa-solid {
+            color: white;
+            font-size: large;
+        }
+
+        .submit {
+            background-color: whitesmoke;
+            color: rgb(49, 49, 49);
+            font-weight: bold;
+            font-family: "Outfit";
+            font-size: large;
+
+        }
+    </style>
+</head>
+
+<body class="bkg">
+    <!-- CRUD operations 
+    C = Create
+    R = Read
+    U = Update
+    D = Delete -->
+    <br><br>
+    <center>
+        <div class="container bkg" id="div">
+            <h1> To do List</h1>
+            <input type="text" id="search">
+            <button onclick="search()">search</button>
+            <i class="fa-thin fa-trash"></i>
+            <ul id="list">
+
+            </ul>
+            <div class="input-div">
+                <label for="input">Add a new todo </label>
+                <br>
+                <input class="input" id="inp" placeholder="I" type="text">
+            </div>
+            <br><br>
+            <button class="submit" onclick="send()"> Submit</button>
+            <button style="background-color: rgb(14, 13, 13);" onclick="delall()">Delete All</button>
+
+        </div>
+    </center>
+    <script>
+        let getInp = document.getElementById('inp')
+        let getDiv = document.getElementById('div')
+        let getUl = document.getElementById('list')
+        function send() {
+    const taskList = JSON.parse(localStorage.getItem('task')) || [];
+    const newTask = getInp.value.trim();
+    if (!newTask) return;
+
+    const isDuplicate = taskList.some(item => item.task === newTask);
+    if (isDuplicate) {
+        alert('Task already exists');
+        getInp.value = '';
+        return;
+    }
+
+    const taskObj = { task: newTask, status: false };
+    taskList.push(taskObj);
+    localStorage.setItem('task', JSON.stringify(taskList));
+    const createLi = document.createElement('li');
+    createLi.className = 'pira';
+    createLi.innerHTML = `
+        <div class="task-text">${newTask}</div>
+        <div class="task-actions">
+            <button onclick='delet(this)'><i class="fa-solid fa-trash-can"></i></button>
+            <button onclick="edit(this)">Edit</button>
+        </div>
+    `;
+    getUl.appendChild(createLi);
+    getInp.value = '';
+}
+
+
+        getInp.addEventListener('keydown', function (event) {
+            var key = event.keyCode || event.which; // For cross-browser compatibility
+            if (key === 13) {
+                send();
+            }
+        });
+
+        function delet(e) {
+            const taskName = e.parentNode.parentNode.firstChild.textContent.trim();
+            e.parentNode.parentNode.remove();
+            let taskList = JSON.parse(localStorage.getItem('task')) || [];
+            taskList = taskList.filter(item => item.task !== taskName);
+            localStorage.setItem('task', JSON.stringify(taskList));
+        }
+        function edit(e) {
+            console.log(e.parentNode.firstChild.textContent)
+            let taskList = JSON.parse(localStorage.getItem('task')) || [];
+            const taskName = e.parentNode.parentNode.firstChild.textContent.trim();
+            taskList = taskList.filter(item => item.task !== taskName);
+            updatedValue = prompt('Enter Updated Value', e.parentNode.parentNode.firstChild.textContent)
+            if (updatedValue === null || updatedValue.trim() === '') {
+                alert('Task cannot be empty');
+                getInp.value = '';
+                return;
+            }
+            const isDuplicate = taskList.some(item => item.task === updatedValue);
+            if (isDuplicate) {
+                alert('Task already exists');
+                getInp.value = '';
+                return;
+            }
+            const taskObj = {
+                task: updatedValue,
+                status: false
+            };
+            taskList.push(taskObj);
+            localStorage.setItem('task', JSON.stringify(taskList));
+            e.parentNode.parentNode.firstChild.textContent = updatedValue
+        }
+        function delall() {
+            getUl.innerHTML = ''
+        }
+        function loadTasks() {
+            const taskList = JSON.parse(localStorage.getItem('task')) || [];
+            taskList.forEach(item => {
+                const createLi = document.createElement('li');
+                createLi.className = 'pira';
+                createLi.innerHTML = `
+  <div class="task-text">${item.task}</div>
+  <div class="task-actions">
+    <button onclick='delet(this)'><i class="fa-solid fa-trash-can"></i></button>
+    <button onclick="edit(this)">Edit</button>
+  </div>
+`;
+getUl.appendChild(createLi);
+            });
+        }
+        window.onload = loadTasks;
+
+        function search() {
+            getSearch = document.querySelector("#search").value
+            const taskList = JSON.parse(localStorage.getItem('task')) || [];
+            const filtered = taskList.filter(item => item.task == getSearch);
+            if (filtered.length !== 0) {
+                alert("Item is on the list")
+            } else {
+                alert("item is not on the list")
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
