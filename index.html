@@ -1,246 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>To do List</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    <style>
-        body {
-            font-family: "Outfit", sans-serif;
-            background-color: #670afd;
-            color: white;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            justify-content: center;
-        }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 0 20px;
+}
 
-        .container {
-            width: 40%;
-            background-color: #7256ec;
-            padding: 1rem;
-            border-radius: 1rem;
-        }
+header {
+  background: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
 
-        h1,
-        label {
-            color: white;
-        }
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
 
-        ul {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
 
-        .pira {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            background-color: #4e3cb8;
-            border-radius: 1rem;
-            padding: 12px;
-            margin-top: 8px;
-            word-break: break-word;
-        }
+section {
+  margin: 40px 0;
+}
 
-        .task-text {
-            flex: 1;
-            white-space: normal;
-            word-break: break-word;
-        }
+.projects-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
 
-        .task-actions {
-            display: flex;
-            gap: 10px;
-            flex-shrink: 0;
-            margin-left: 15px;
-        }
+.project-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
 
-        button {
-            background-color: #60a16f;
-            border: none;
-            border-radius: 8px;
-            color: whitesmoke;
-            padding: 8px 12px;
-            cursor: pointer;
-        }
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px 0;
+  background: #333;
+  color: white;
+}
 
-        input#search {
-            width: 100%;
-            padding: 12px;
-            background-color: #4e3cb8;
-            color: whitesmoke;
-            border-radius: 6px;
-            border: none;
-            margin-top: 10px;
-            box-sizing: border-box;
-        }
-
-        input#inp {
-            width: 100%;
-            padding: 12px;
-            background-color: #4e3cb8;
-            color: whitesmoke;
-            border-radius: 6px;
-            border: none;
-            margin-top: 10px;
-            box-sizing: border-box;
-        }
-
-        .submit {
-            margin-top: 10px;
-            width: 100%;
-            background-color: whitesmoke;
-            color: rgb(49, 49, 49);
-            font-weight: bold;
-            font-family: "Outfit";
-            font-size: large;
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-        }
-        @media screen and (max-width: 767px){
-            .container{
-                width: 80vw;
-            }
-        }
-
-    </style>
+  </style>
 </head>
-
 <body>
-    <div class="container" data-aos="fade-up">
-        <h1 data-aos="zoom-in-up" data-aos-delay = "600">To do List</h1>
-        <input type="text" id="search" placeholder="Search tasks" onkeyup="search()" data-aos="zoom-in-left" data-aos-delay = "700" />  
-        <h1 data-aos="zoom-in-up" data-aos-delay = "800">Add a new Task</h1>        
-        <input type="text" id="inp" placeholder="Enter your task here" data-aos="zoom-in-left" data-aos-delay = "900"/>
-        <a href="./Calculator/index.html">adasdasd</a>
-        <button class="submit" onclick="send()" data-aos="fade-up" data-aos-delay = "1000">Submit</button>
-        <button class="submit" style="background-color: rgb(14, 13, 13); color: rgb(180, 180, 180);" onclick="delall(this)" data-aos="fade-up" data-aos-delay = "1100">Delete All</button>
-        <ul id="list" data-aos="zoom-in-up" data-aos-delay = "1300" ></ul>
+  <header>
+    <h1>My Portfolio</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Assignments</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hi! I'm a student learning web development. This portfolio showcases my assignments and projects hosted on GitHub.</p>
+  </section>
+
+  <section id="projects">
+    <h2>My Assignments</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Array</h3>
+        <p>Array assignment.</p>
+        <a href="./Array/index.html" target="_blank">Click to see</a>
+      </div>
+      <div class="project-card">
+        <h3>Assignment 1</h3>
+        <p>Description of the assignment.</p>
+        <a href="./assignment 1/index.html" target="_blank">Click to see</a>
+      </div>
     </div>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-        const getInp = document.getElementById("inp");
-        const getUl = document.getElementById("list");
-        const delAllButton = document.querySelector("button[onclick='delall(this)']");
+  </section>
 
-        function send() {
-            const newTask = getInp.value.trim();
-            if (!newTask || newTask.length <= 0) return alert("Please enter a task");
-
-            const taskList = JSON.parse(localStorage.getItem("task")) || [];
-            if (taskList.some((t) => t.task === newTask)) {
-                alert("Task already exists");
-                getInp.value = "";
-                return;
-            }
-
-            taskList.push({ task: newTask, status: false });
-            localStorage.setItem("task", JSON.stringify(taskList));
-
-            addTaskToList(newTask);
-            getInp.value = "";
-            delAllButton.disabled = false;  
-            delAllButton.style.backgroundColor = "rgb(14, 13, 13)";
-        }
-
-        function addTaskToList(task) {
-            const li = document.createElement("li");
-            li.className = "pira";
-            li.innerHTML = `
-        <div class="task-text">${task}</div>
-        <div class="task-actions">
-          <button onclick="delet(this)"><i class="fa-solid fa-trash-can"></i></button>
-          <button onclick="edit(this)">Edit</button>
-        </div>
-      `;
-            getUl.appendChild(li);
-        }
-
-        function delet(button) {
-            const li = button.closest("li");
-            const taskText = li.querySelector(".task-text").textContent;
-            li.remove();
-            let taskList = JSON.parse(localStorage.getItem("task")) || [];
-            taskList = taskList.filter((item) => item.task !== taskText);
-            if(taskList.length == 0){
-                delAllButton.disabled = true;
-                delAllButton.style.backgroundColor = "rgb(180, 180, 180)";
-
-            }
-            localStorage.setItem("task", JSON.stringify(taskList));
-        }
-
-        function edit(button) {
-            const li = button.closest("li");
-            const oldTask = li.querySelector(".task-text").textContent;
-
-            const updatedValue = prompt("Update Task", oldTask);
-            if (updatedValue === null || updatedValue.trim() === "") {
-                alert("Task cannot be empty");
-                return;
-            }
-
-            let taskList = JSON.parse(localStorage.getItem("task")) || [];
-            if (taskList.some((item) => item.task === updatedValue.trim())) {
-                alert("Task already exists");
-                return;
-            }
-            taskList = taskList.filter((item) => item.task !== oldTask);
-            taskList.push({ task: updatedValue.trim(), status: false });
-            localStorage.setItem("task", JSON.stringify(taskList));
-
-            li.querySelector(".task-text").textContent = updatedValue.trim();
-        }
-
-        function delall(button) {
-            getUl.innerHTML = ''
-            localStorage.removeItem("task");
-            button.disabled = true;
-            button.style.backgroundColor = "rgb(180, 180, 180)";
-        }
-
-        function loadTasks() {
-            const taskList = JSON.parse(localStorage.getItem("task")) || [];
-            taskList.forEach((item) => addTaskToList(item.task));
-            if(taskList.length == 0){
-                delAllButton.disabled = true;
-                delAllButton.style.backgroundColor = "rgb(180, 180, 180)";
-            }
-        }
-
-        function search() {
-                const input = document.getElementById("search").value.toLowerCase();
-                const items = document.querySelectorAll("#list li");
-                items.forEach(item => {
-                    const text = item.textContent.toLowerCase();
-                    item.style.display = text.includes(input) ? "flex" : "none";
-                });
-            if (input === "") {
-                const allItems = document.querySelectorAll("#list li");
-                allItems.forEach(item => item.style.display = "flex");
-            }
-            
-        }
-
-        window.onload = loadTasks;
-
-        getInp.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") send();
-        });
-        
-    </script>
+  <footer>
+    <p>© 2025 Your Name. All rights reserved.</p>
+  </footer>
 </body>
-
 </html>
