@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>To do List Fixed Wrap</title>
+    <title>To do List</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         body {
             font-family: "Outfit", sans-serif;
@@ -38,7 +40,7 @@
             list-style: none;
         }
 
-        li.pira {
+        .pira {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
@@ -47,22 +49,18 @@
             padding: 12px;
             margin-top: 8px;
             word-break: break-word;
-            /* IMPORTANT */
         }
 
-        /* Task text takes full space and wraps */
         .task-text {
             flex: 1;
             white-space: normal;
             word-break: break-word;
         }
 
-        /* Button container */
         .task-actions {
             display: flex;
             gap: 10px;
             flex-shrink: 0;
-            /* Don't shrink buttons */
             margin-left: 15px;
         }
 
@@ -110,33 +108,36 @@
             border: none;
             cursor: pointer;
         }
-
-        .bkg {
-            background-color: #670afd;
+        @media screen and (max-width: 767px){
+            .container{
+                width: 80vw;
+            }
         }
+
     </style>
 </head>
 
-<body class="bkg">
-    <div class="container">
-        <h1>To do List</h1>
-        <input type="text" id="search" placeholder="Search tasks" onkeyup="search()"  />  
-        <h1>Add a new Task</h1>        
-        <input type="text" id="inp" placeholder="Enter your task here" />
-        <button class="submit" onclick="send()">Submit</button>
-        <button class="submit" style="background-color: rgb(14, 13, 13); color: rgb(180, 180, 180);" onclick="delall(this)">Delete All</button>
-        <ul id="list"></ul>
+<body>
+    <div class="container" data-aos="fade-up">
+        <h1 data-aos="zoom-in-up" data-aos-delay = "600">To do List</h1>
+        <input type="text" id="search" placeholder="Search tasks" onkeyup="search()" data-aos="zoom-in-left" data-aos-delay = "700" />  
+        <h1 data-aos="zoom-in-up" data-aos-delay = "800">Add a new Task</h1>        
+        <input type="text" id="inp" placeholder="Enter your task here" data-aos="zoom-in-left" data-aos-delay = "900"/>
+        <button class="submit" onclick="send()" data-aos="fade-up" data-aos-delay = "1000">Submit</button>
+        <button class="submit" style="background-color: rgb(14, 13, 13); color: rgb(180, 180, 180);" onclick="delall(this)" data-aos="fade-up" data-aos-delay = "1100">Delete All</button>
+        <ul id="list" data-aos="zoom-in-up" data-aos-delay = "1300" ></ul>
     </div>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        AOS.init();
         const getInp = document.getElementById("inp");
         const getUl = document.getElementById("list");
+        const delAllButton = document.querySelector("button[onclick='delall(this)']");
 
         function send() {
             const newTask = getInp.value.trim();
             if (!newTask || newTask.length <= 0) return alert("Please enter a task");
 
-            // Prevent duplicates
             const taskList = JSON.parse(localStorage.getItem("task")) || [];
             if (taskList.some((t) => t.task === newTask)) {
                 alert("Task already exists");
@@ -149,7 +150,6 @@
 
             addTaskToList(newTask);
             getInp.value = "";
-            const delAllButton = document.querySelector("button[onclick='delall(this)']");
             delAllButton.disabled = false;  
             delAllButton.style.backgroundColor = "rgb(14, 13, 13)";
         }
@@ -171,9 +171,13 @@
             const li = button.closest("li");
             const taskText = li.querySelector(".task-text").textContent;
             li.remove();
-
             let taskList = JSON.parse(localStorage.getItem("task")) || [];
             taskList = taskList.filter((item) => item.task !== taskText);
+            if(taskList.length == 0){
+                delAllButton.disabled = true;
+                delAllButton.style.backgroundColor = "rgb(180, 180, 180)";
+
+            }
             localStorage.setItem("task", JSON.stringify(taskList));
         }
 
@@ -209,6 +213,10 @@
         function loadTasks() {
             const taskList = JSON.parse(localStorage.getItem("task")) || [];
             taskList.forEach((item) => addTaskToList(item.task));
+            if(taskList.length == 0){
+                delAllButton.disabled = true;
+                delAllButton.style.backgroundColor = "rgb(180, 180, 180)";
+            }
         }
 
         function search() {
@@ -222,6 +230,7 @@
                 const allItems = document.querySelectorAll("#list li");
                 allItems.forEach(item => item.style.display = "flex");
             }
+            
         }
 
         window.onload = loadTasks;
@@ -229,6 +238,7 @@
         getInp.addEventListener("keydown", (e) => {
             if (e.key === "Enter") send();
         });
+        
     </script>
 </body>
 
