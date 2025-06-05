@@ -114,9 +114,64 @@
             }
         }
 
+        /* checkbox */
+.custom-checkbox {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.custom-checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.custom-checkbox input:checked + .checkmark {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox input:checked + .checkmark::after {
+  display: block;
+}
+
+/* Completed task style */
+.completed {
+  text-decoration: line-through;
+  color: #df3232;
+}
+
     </style>
 </head>
-
 <body>
     <div class="container" data-aos="fade-up">
         <h1 data-aos="zoom-in-up" data-aos-delay = "600">To do List</h1>
@@ -154,18 +209,51 @@
             delAllButton.style.backgroundColor = "rgb(14, 13, 13)";
         }
 
-        function addTaskToList(task) {
-            const li = document.createElement("li");
-            li.className = "pira";
-            li.innerHTML = `
-        <div class="task-text">${task}</div>
-        <div class="task-actions">
-          <button onclick="delet(this)"><i class="fa-solid fa-trash-can"></i></button>
-          <button onclick="edit(this)">Edit</button>
-        </div>
-      `;
-            getUl.appendChild(li);
-        }
+       function addTaskToList(taskText, status = false) {
+  const li = document.createElement("li");
+  li.className = "pira";
+
+  li.innerHTML = `
+    <div class="task-text">${taskText}</div>
+    <div class="task-actions">
+      <label class="custom-checkbox">
+        <input type="checkbox" onchange="toggleComplete(this)" ${status ? "checked" : ""}>
+        <span class="checkmark"></span>
+      </label>
+      <button onclick="delet(this)"><i class="fa-solid fa-trash-can"></i></button>
+      <button onclick="edit(this)">Edit</button>
+    </div>
+  `;
+
+  if (status) {
+    li.querySelector(".task-text").classList.add("completed");
+  }
+
+  getUl.appendChild(li);
+}
+
+
+
+function toggleComplete(checkbox) {
+  const li = checkbox.closest("li");
+  const taskText = li.querySelector(".task-text");
+  const taskName = taskText.textContent;
+
+  taskText.classList.toggle("completed", checkbox.checked);
+
+  // Update localStorage
+  const taskList = JSON.parse(localStorage.getItem("task")) || [];
+  const updatedList = taskList.map((item) => {
+    if (item.task === taskName) {
+      return { ...item, status: checkbox.checked };
+    }
+    return item;
+  });
+
+  localStorage.setItem("task", JSON.stringify(updatedList));
+}
+
+
 
         function delet(button) {
             const li = button.closest("li");
@@ -211,13 +299,18 @@
         }
 
         function loadTasks() {
-            const taskList = JSON.parse(localStorage.getItem("task")) || [];
-            taskList.forEach((item) => addTaskToList(item.task));
-            if(taskList.length == 0){
-                delAllButton.disabled = true;
-                delAllButton.style.backgroundColor = "rgb(180, 180, 180)";
-            }
-        }
+  const taskList = JSON.parse(localStorage.getItem("task")) || [];
+
+  taskList.forEach((item) => {
+    addTaskToList(item.task, item.status);
+  });
+
+  if (taskList.length === 0) {
+    delAllButton.disabled = true;
+    delAllButton.style.backgroundColor = "rgb(180, 180, 180)";
+  }
+}
+
 
         function search() {
                 const input = document.getElementById("search").value.toLowerCase();
