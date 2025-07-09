@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyNews | Tesla Updates</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Tech<span>News</span></h1>
+                <p>Your source for the latest in technology</p>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Electric Vehicles</a></li>
+                    <li><a href="#">Energy</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for news...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content container">
+        <section class="featured-article">
+            <!-- Featured article will be loaded here by JavaScript -->
+        </section>
+
+        <section class="news-grid">
+            <h2 class="section-title">Latest Tesla News</h2>
+            <div class="grid-container" id="news-container">
+                <!-- News articles will be loaded here by JavaScript -->
+            </div>
+            <button class="load-more" id="load-more">Load More Articles</button>
+        </section>
+
+        <aside class="sidebar">
+            <div class="newsletter">
+                <h3>Subscribe to our Newsletter</h3>
+                <p>Get the latest tech news delivered to your inbox</p>
+                <form>
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            <div class="trending-topics">
+                <h3>Trending Topics</h3>
+                <ul>
+                    <li><a href="#">Cybertruck Updates</a></li>
+                    <li><a href="#">Autopilot Technology</a></li>
+                    <li><a href="#">Battery Innovations</a></li>
+                    <li><a href="#">Tesla Energy</a></li>
+                    <li><a href="#">Elon Musk Updates</a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>About TechNews</h3>
+                    <p>TechNews is a leading technology news platform dedicated to bringing you the latest updates in the tech world, with a special focus on electric vehicles and sustainable energy solutions.</p>
+                    <div class="socials">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Electric Vehicles</a></li>
+                        <li><a href="#">Energy</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Silicon Valley, CA</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@technews.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechNews. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
