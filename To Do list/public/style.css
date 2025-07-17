@@ -1,0 +1,157 @@
+        body {
+            font-family: "Outfit", sans-serif;
+            background-color: #670afd;
+            color: white;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 40%;
+            background-color: #7256ec;
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+
+        h1,
+        label {
+            color: white;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .pira {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background-color: #4e3cb8;
+            border-radius: 1rem;
+            padding: 12px;
+            margin-top: 8px;
+            word-break: break-word;
+        }
+
+        .task-text {
+            flex: 1;
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+            margin-left: 15px;
+        }
+
+        button {
+            background-color: #60a16f;
+            border: none;
+            border-radius: 8px;
+            color: whitesmoke;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        input#search {
+            width: 100%;
+            padding: 12px;
+            background-color: #4e3cb8;
+            color: whitesmoke;
+            border-radius: 6px;
+            border: none;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+
+        input#inp {
+            width: 100%;
+            padding: 12px;
+            background-color: #4e3cb8;
+            color: whitesmoke;
+            border-radius: 6px;
+            border: none;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+
+        .submit {
+            margin-top: 10px;
+            width: 100%;
+            background-color: whitesmoke;
+            color: rgb(49, 49, 49);
+            font-weight: bold;
+            font-family: "Outfit";
+            font-size: large;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+        }
+        @media screen and (max-width: 767px){
+            .container{
+                width: 80vw;
+            }
+        }
+
+        /* checkbox */
+.custom-checkbox {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.custom-checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.custom-checkbox input:checked + .checkmark {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox input:checked + .checkmark::after {
+  display: block;
+}
+
+/* Completed task style */
+.completed {
+  text-decoration: line-through;
+  color: #df3232;
+}
