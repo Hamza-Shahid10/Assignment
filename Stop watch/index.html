@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <center> 
+    <h1>STOPwatch</h1>
+    <div style="display: inline-block; font-family: monospace; font-size: 2rem;">
+    <h3 style="display: inline-block; margin: 0 5px;" id="mint">00</h3>
+    <span style="display: inline-block;">:</span>
+    <h3 style="display: inline-block; margin: 0 5px;" id="sec">00</h3>
+    <span style="display: inline-block;">:</span>
+    <h3 style="display: inline-block; margin: 0 5px;" id="msec">00</h3>
+
+</div>
+<div>
+  <button id="startbtn"  onclick="startTimer()"> start </button>
+    <button id="stopbtn"  onclick="stop()"> Stop </button>
+    <button id="resetbtn"  onclick="reset()"> Reset </button>
+    </div
+    </center>
+    <script>
+            let getmint = document.getElementById('mint');
+            let getsec = document.getElementById('sec');
+            let getmsec = document.getElementById('msec');
+let msec = 0
+let sec = 0
+let mint = 0
+let interval;
+function startTimer() {
+    interval = setInterval(() => {
+        msec++
+        getmsec.innerHTML = msec
+        if (msec >= 100) {
+            sec++
+            getsec.innerHTML = sec
+            msec = 0
+        } else if (sec >= 59) {
+            mint++
+            getmint.innerHTML = mint
+            sec = 0
+        }
+    },10);
+
+    document.getElementById('startbtn').disabled = true;
+}
+
+function stop() {
+    clearInterval(interval);
+    document.getElementById('startbtn').disabled = false;
+}
+
+function reset() {
+    clearInterval(interval);    
+    msec = 0;
+    sec = 0;
+    mint = 0;
+    getmsec.innerHTML = msec;
+    getsec.innerHTML = sec;
+    getmint.innerHTML = mint;
+    document.getElementById('startbtn').disabled = false;
+}
+
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     let mint = document.getElementById('mint');
+        //     let sec = document.getElementById('sec');
+        //     let msec = document.getElementById('msec');
+
+        //     let startTime;
+        //     let timerInterval;
+
+        //     function startTimer() {
+        //         startTime = Date.now();
+        //         timerInterval = setInterval(updateTimer, 10);
+        //     }
+
+        //     function updateTimer() {
+        //         const elapsedTime = Date.now() - startTime;
+        //         const minutes = Math.floor((elapsedTime / 1000 / 60) % 60);
+        //         const seconds = Math.floor((elapsedTime / 1000) % 60);
+        //         const milliseconds = Math.floor((elapsedTime % 1000) / 10);
+
+        //         mint.innerHTML = minutes;
+        //         sec.innerHTML = seconds;
+        //         msec.innerHTML = milliseconds;
+        //     }
+
+        //     startTimer();
+        // });
+    </script>
+</body>
+</html>
