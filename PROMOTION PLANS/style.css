@@ -1,0 +1,105 @@
+
+*{
+    background-color: rgb(68, 67, 67);
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    
+}
+
+h1{
+    color: white;
+}
+
+.poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+table{
+    width: 80%; /* Increase width of the table */
+    border-collapse: collapse; /* For cleaner borders */
+    font-size: 18px; /* Increase font size */
+    align-items: center;
+    border-radius: 5px ;
+    margin: auto;
+}
+th {
+    padding: 15px; /* Increase padding for more space in cells */
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 15px; /* Increase padding for more space in cells */
+    text-align: left; /* Align text to the left */
+    background-color: rgb(68, 67, 67);
+    color: whitesmoke;
+    border: 2px solid rgba(0, 0, 0, 0.673); /* Increase the thickness of the border */
+}
+
+i{
+    color: orange;
+    font-size: xx-large;
+}
+
+.white{
+    background: #ffffff;
+}
+
+.red{
+    background-color: red;
+}
+
+.orange{
+    background-color: orange;
+}
+
+.aqua{
+    background-color: rgb(128, 203, 228);
+}
+
+
+.hello{
+    font-weight: bold;
+    color: orange;
+    font-size: 40px;
+}
+
+.hi{
+    color: red;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.yay{
+    font-weight: bold;
+    color: rgb(128, 203, 228);
+    font-size: 40px;
+
+}
+
+.but{
+width: 60px;
+background-color: red;
+margin: auto;
+align-content: center;
+align-items: center;
+text-align: center;
+border-radius: 10px;
+transition: 0.3s ease;
+ cursor:pointer;
+ display: flex;
+}
+
+.but:hover{
+    background-color: yellow;
+    color: black;
+    border: 2px solid black;
+}
+
+td:hover{
+    background-color: rgb(149, 149, 127);
+    color: rgb(243, 236, 236);
+    border: 2px solid black;
+    transition: 0.5s ease;
+}

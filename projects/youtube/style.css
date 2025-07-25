@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #f52525; /* Add your desired header background color */
+    padding: 10px;
+    color: #ffffff; /* Add your desired header text color */
+  }
+
+  .logo {
+    height: 40px;
+    vertical-align: middle;
+  }
+
+  .search-form {
+    display: inline-block;
+    margin: 10px 20px;
+  }
+
+  .search-form input {
+    width: 500px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+  }
+
+  .search-form button {
+    padding: 5px 10px;
+    background-color: #faf2f2; /* Add your desired search button background color */
+    border: none;
+    color: #0f0000; /* Add your desired search button text color */
+    border-radius: 5px;
+  }
+ a{
+    text-decoration: none;
+    color: #ffffff;
+
+ }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li {
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    margin-right: 20px;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust this for your desired number of video columns */
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .video img {
+    width: 100%;
+    height: auto;
+  }
+
+  .video h3 {
+    margin: 5px 0;
+  }
+
+  footer {
+    background-color: #000000; /* Add your desired footer background color */
+    padding: 10px;
+    color: #ffffff; /* Add your desired footer text color */
+    text-align: center;
+  }
+
+  footer ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  footer ul li {
+    display: inline-block;
+    margin-right: 20px;
+  }
