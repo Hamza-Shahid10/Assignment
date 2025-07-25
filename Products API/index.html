@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Fetcher</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f6f8fa;
+      padding: 20px;
+    }
+    .product {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      padding: 16px;
+      margin-bottom: 20px;
+      max-width: 400px;
+    }
+    .product img {
+      width: 100%;
+      height: auto;
+    }
+    .product h2 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+    .product p {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🛒 Product List</h1>
+  <div id="product-container">Loading products...</div>
+
+  <script>
+    const container = document.getElementById("product-container");
+
+    fetch("https://fakestoreapi.com/products")
+      .then(response => response.json())
+      .then(data => {
+        container.innerHTML = ""; // Clear loading text
+        data.forEach(product => {
+          const productCard = `
+            <div class="product">
+              <img src="${product.image}" alt="${product.title}" />
+              <h2>${product.title}</h2>
+              <p><strong>Price:</strong> $${product.price}</p>
+              <p>${product.description.substring(0, 100)}...</p>
+            </div>
+          `;
+          container.innerHTML += productCard;
+        });
+      })
+      .catch(error => {
+        container.innerHTML = "Failed to load products 😢";
+        console.error("Fetch error:", error);
+      });
+  </script>
+</body>
+</html>
