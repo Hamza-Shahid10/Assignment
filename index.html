@@ -14,14 +14,13 @@
     body {
       font-family: 'Segoe UI', sans-serif;
       line-height: 1.6;
-      background-color: #f5f5f5;
-      color: #333;
+      background-color: #383838;
       padding: 0 20px;
     }
 
     header {
-      background: #333;
-      color: #fff;
+      background: #292929;
+      color: #ffffff;
       padding: 20px 0;
       text-align: center;
     }
@@ -42,6 +41,14 @@
       margin: 40px 0;
     }
 
+    .projects-title {
+      color: #b8b8b8;
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
     .projects-grid {
       display: grid;
       gap: 20px;
@@ -55,6 +62,23 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
+    .project-card h3 {
+      color: #333;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: #333;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .project-card a {
+      color: #0510ac;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
     footer {
       text-align: center;
       margin-top: 40px;
@@ -74,27 +98,27 @@
       </ul>
     </nav>
   </header>
-  <section id="about">
+  <section id="about" style="color: #ffffff;">
     <h2>About Me</h2>
     <p>Hi! I'm a student learning web development. This portfolio showcases my assignments and projects hosted on GitHub.</p>
   </section>
   <section id="projects">
-    <h2>My Assignments</h2>
+    <h2 class="projects-title">My Assignments</h2>
     <div class="projects-grid">
+      <div class="project-card">
+        <h3>To Do List</h3>
+        <p>Create and manage a to-do list.</p>
+        <a href="./To Do list/public/index.html" target="_blank">Click to see</a>
+      </div>
+      <div class="project-card">
+        <h3>Product Api</h3>
+        <p>A product api that displays products.</p>
+        <a href="./Products-Api/index.html" target="_blank">Click to see</a>
+      </div>
       <div class="project-card">
         <h3>News app</h3>
         <p>I made a news app. TechNews</p>
         <a href="./News/index.html" target="_blank">Click to see</a>
-      </div>
-      <div class="project-card">
-        <h3>Array</h3>
-        <p>Practice with arrays in JavaScript.</p>
-        <a href="./Array/index.html" target="_blank">Click to see</a>
-      </div>
-      <div class="project-card">
-        <h3>Assignment 1</h3>
-        <p>First HTML/CSS assignment.</p>
-        <a href="./assignment 1/index.html" target="_blank">Click to see</a>
       </div>
       <div class="project-card">
         <h3>Calculator</h3>
@@ -106,21 +130,46 @@
         <p>Create user profile or info cards.</p>
         <a href="./Card creator/index.html" target="_blank">Click to see</a>
       </div>
+      
+      <div class="project-card">
+        <h3>Expense List</h3>
+        <p>Track and manage daily expenses.</p>
+        <a href="./Expense list/index.html" target="_blank">Click to see</a>
+      </div>
+      <div class="project-card">
+        <h3>Quiz App</h3>
+        <p>Interactive multiple-choice quiz.</p>
+        <a href="./Quiz-app/index.html" target="_blank">Click to see</a>
+      </div>
+      <div class="project-card">
+        <h3>Stop Watch</h3>
+        <p>Responsive Stop Watch</p>
+        <a href="./Stop watch/index.html" target="_blank">Click to see</a>
+      </div>
+
       <div class="project-card">
         <h3>Date and Time</h3>
         <p>Show current date and time using JavaScript.</p>
         <a href="./Date n Time/index.html" target="_blank">Click to see</a>
       </div>
       <div class="project-card">
+        <h3>Array</h3>
+        <p>Practice with arrays in JavaScript.</p>
+        <a href="./Array/index.html" target="_blank">Click to see</a>
+      </div>
+      <div class="project-card">
+        <h3>Assignment 1</h3>
+        <p>First HTML/CSS assignment.</p>
+        <a href="./assignment 1/index.html" target="_blank">Click to see</a>
+      </div>
+      
+      
+      <div class="project-card">
         <h3>Events</h3>
         <p>JavaScript DOM events practice.</p>
         <a href="./Events/index.html" target="_blank">Click to see</a>
       </div>
-      <div class="project-card">
-        <h3>Expense List</h3>
-        <p>Track and manage daily expenses.</p>
-        <a href="./Expense list/index.html" target="_blank">Click to see</a>
-      </div>
+      
       <div class="project-card">
         <h3>Familiar Operations</h3>
         <p>Basic arithmetic and logic operations.</p>
@@ -152,20 +201,11 @@
         <a href="./problem/index.html" target="_blank">Click to see</a>
       </div>
       <div class="project-card">
-        <h3>Quiz App</h3>
-        <p>Interactive multiple-choice quiz.</p>
-        <a href="./Quiz app/index.html" target="_blank">Click to see</a>
-      </div>
-      <div class="project-card">
         <h3>Setting Paragraph</h3>
         <p>Modify and format paragraph text.</p>
         <a href="./Setting Paragraph/index.html" target="_blank">Click to see</a>
       </div>
-      <div class="project-card">
-        <h3>Stop Watch</h3>
-        <p>Responsive Stop Watch</p>
-        <a href="./Stop watch/index.html" target="_blank">Click to see</a>
-      </div>
+      
       <div class="project-card">
         <h3>Strings</h3>
         <p>JavaScript string methods and operations.</p>
@@ -181,11 +221,7 @@
         <p>Accessing elements by tag name.</p>
         <a href="./Tagname/index.html" target="_blank">Click to see</a>
       </div>
-      <div class="project-card">
-        <h3>To Do List</h3>
-        <p>Create and manage a to-do list.</p>
-        <a href="./To Do list/index.html" target="_blank">Click to see</a>
-      </div>
+      
     </div>
   </section>
   <footer>

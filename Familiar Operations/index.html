@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JS Practice Runner</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background: #f9f9f9;
+      padding: 20px;
+      color: #333;
+    }
+    h1, h2 {
+      color: #444;
+    }
+    .code-block {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 6px;
+      white-space: pre;
+      overflow-x: auto;
+      margin-bottom: 10px;
+    }
+    button {
+      margin: 10px 0;
+      padding: 8px 14px;
+      font-weight: bold;
+      border: none;
+      background-color: #0077cc;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .output {
+      background: #e6e6e6;
+      padding: 10px;
+      border-radius: 4px;
+      font-family: monospace;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>💻 JS Visible Code Practice</h1>
+
+<!-- 1. Hello World and Variable Practice -->
+<h2>1. Hello & Variables</h2>
+<div class="code-block" id="code1">
+ document.write("<h1> hello world </h1>")
+ <!-- hello world -->
+ /* hello world */
+
+ document.write(hello)
+
+ var firstName;
+ document.write('firstName')
+
+ var student1 = "Saad bhai"
+ document.write("student1 ==>"+ student1 + " " +"Mudassir")
+
+ var num1 = "10"
+ var num2 = "abc"
+ document.write(num1 * num2)
+
+ var eq = 2 + 0 + (2 - 5) * 2 
+ document.write(eq)
+ -4
+ 8
+ 4
+ 20
+</div>
+<button onclick="runCode('code1', 'output1')">Run Code</button>
+<div class="output" id="output1">Result here...</div>
+
+<!-- 2. Alerts and Prompts -->
+<h2>2. Alerts and Prompts</h2>
+<div class="code-block" id="code2">
+ alert("hello world")
+
+ document.write("hello <br> world")
+
+ alert("hello \n world")
+
+ var username;
+ var myName = "SAAD ALI"
+
+ var message;
+ message = "hello world"
+ alert(message)
+
+ var name = "Saad"
+ var roll = 123
+ var uni = "SMIU"
+ alert(name)
+ alert(roll)
+ alert(uni)
+</div>
+<button onclick="runCode('code2', 'output2')">Run Code</button>
+<div class="output" id="output2">Result here...</div>
+
+<!-- 3. Prompt Table -->
+<h2>3. Table From Prompts</h2>
+<div class="code-block" id="code3">
+ var noOfChilds = prompt("Enter number of childs")
+ var partnerName = prompt("Enter partner name")
+ var loc = prompt('Enter any location')
+ var jobTitle = prompt('Enter job title')
+
+ document.write(`
+ <table border=''> 
+   <tr>
+       <td> No Of Childs </td>
+       <td> Partner Name </td>
+       <td> Location </td>
+       <td> Job Title </td>
+   </tr>
+   <tr> 
+       <td> ${noOfChilds} </td>
+       <td> ${partnerName} </td>
+       <td> ${loc} </td>
+       <td> ${jobTitle} </td>
+   </tr>
+ </table>`)
+</div>
+<button onclick="runCode('code3', 'output3')">Run Code</button>
+<div class="output" id="output3">Result here...</div>
+
+<!-- 4. Math and Expressions -->
+<h2>4. Math & Expressions</h2>
+<div class="code-block" id="code4">
+ var num1 = prompt("Enter number")
+ var num2 = 3
+ document.write(num1 * num2)
+
+ alert(num1 / num2)
+
+ var num2 = 5
+ var num3 = num2+1
+ var num4 = num3+7
+
+ document.write(`<h1>  ${num2} </h1>`)
+ document.write(`<h1> ${num3} </h1>`)
+ document.write(`<h1> ${num4} </h1>`)
+</div>
+<button onclick="runCode('code4', 'output4')">Run Code</button>
+<div class="output" id="output4">Result here...</div>
+
+<!-- 5. Ticket and Snack Calculation -->
+<h2>5. Ticket & Snack Life</h2>
+<div class="code-block" id="code5">
+ var ticket = 600
+ document.write(`the cost of 5 ticket is ${ticket * 5}`)
+
+ var snack = "Lays"
+ var age = 10
+var maxAge = 85
+ var dailyDose = 2
+  var p = dailyDose * 365
+ var d = maxAge - age
+
+ document.write(`<h1>total snacks is ${(dailyDose * 365) * (maxAge - age) }</h1>`)
+document.write(`<h1> ${p} </h1>`)
+ document.write(`<h1> ${d} </h1>`)
+</div>
+<button onclick="runCode('code5', 'output5')">Run Code</button>
+<div class="output" id="output5">Result here...</div>
+
+<!-- 6. Rules for JS Vars -->
+<h2>6. JS Variable Rules</h2>
+<div class="code-block" id="code6">
+document.getElementById('h').innerHTML = ("a. A heading stating \u201cRules for naming JS variables")
+
+document.write(`<h1> b. Variable names can only contain <u>Letters, Numbers, Underscores</u> and <u>Dollarsign</u>. 
+  For example $my_1stVariable <br> d. Variable names are case <u>Sensitive</u>
+  <br>e. Variable names should not be JS <u>Keywords</u></h1>`)
+</div>
+<button onclick="runCode('code6', 'output6')">Run Code</button>
+<div class="output" id="output6">Result here...</div>
+
+<h1 id="h"></h1>
+
+<script>
+  function runCode(codeId, outputId) {
+    const code = document.getElementById(codeId).innerText;
+    const output = document.getElementById(outputId);
+    try {
+      eval(code);
+    } catch (err) {
+      output.innerText = "❌ Error: " + err.message;
+    }
+  }
+</script>
+
+</body>
+</html>

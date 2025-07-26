@@ -10,12 +10,12 @@ function addExpense() {
 
   var li = document.createElement("li")
   li.innerHTML = `
-        ${name} -$${amount}
+        ${name} $${amount}
         <button class="delete-btn" onclick="deleteExpense(this, ${amount})">Delete</button>
       `
 
   expenseList.appendChild(li)
-  totalExpense -= amount
+  totalExpense += amount
   updateTotal()
 
   document.getElementById("naam").value = ""

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript Concepts</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .code-block {
+      background: #1e1e1e;
+      color: #dcdcdc;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      overflow-x: auto;
+    }
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 40px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Concept Examples</h1>
+
+  <div class="code-block">
+    <h3>REPEATING STRING:</h3>
+    <pre><code>
+let arr = "hello world hello hamza";
+let trr = arr.split(" ");
+for (let i = 0; i &lt; trr.length; i++) {
+  console.log(trr[i]);
+  if (trr[i] === "hello") {
+    alert("arib paddo");
+  }
+}
+    </code></pre>
+  </div>
+
+  <div class="code-block">
+    <h3>FIRST LETTER CAPITAL:</h3>
+    <pre><code>
+let arr = prompt("enter your word");
+console.log(arr.toUpperCase());
+let trr = arr.split(" ");
+for (let i = 0; i &lt; trr.length; i++) {
+  console.log(trr[i][0].toUpperCase() + trr[i].slice(1));
+}
+    </code></pre>
+  </div>
+
+  <div class="code-block">
+    <h3>PALINDROME:</h3>
+    <pre><code>
+let str = prompt("enter your word");
+let newStr = "";
+for (let i = str.length - 1; i &gt;= 0; i--) {
+  newStr += str[i];
+}
+console.log(newStr);
+    </code></pre>
+  </div>
+
+  <div class="code-block">
+    <h3>SWITCH CASE:</h3>
+    <pre><code>
+let dayOfWeek = prompt("Enter the first three letters of the day").toLowerCase();
+switch (dayOfWeek) {
+  case "tue":
+    alert("mangal h najim");
+    break;
+  case "mon":
+    alert("peer h yr");
+    break;
+  case "wed":
+    alert("budh h bhai tesra din agya");
+    break;
+  case "thu":
+    alert("aj jumerat h arib ki barat h");
+    break;
+  case "fri":
+    alert("agya jumma, Jumme ki raat h");
+    break;
+  case "sat":
+    alert("hafta kofta, apni raat ha");
+    break;
+  case "sun":
+    alert("majdoro ki chutii");
+    break;
+  default:
+    alert("din likhne ko kaha h bhai");
+}
+    </code></pre>
+  </div>
+
+  <div class="code-block">
+    <h3>TOSS:</h3>
+    <pre><code>
+let tass = Math.ceil(Math.random() * 2);
+function toss(tass) {
+  if (tass === 2) {
+    alert("Hat aya h");
+  } else {
+    alert("Tail aya h");
+  }
+}
+let chalo = confirm("Toss krna h k nh");
+if (chalo) toss(tass);
+    </code></pre>
+  </div>
+
+  <div class="code-block">
+    <h3>ALPHABETICAL ORDER:</h3>
+    <pre><code>
+function alphabet_order(str) {
+  return str.split("").sort().join("");
+}
+console.log(alphabet_order(prompt("Enter your string")));
+    </code></pre>
+  </div>
+
+  <div class="code-block">
+    <h3>LONGEST WORD IN STRING:</h3>
+    <pre><code>
+let str2 = "web development course";
+let splitStr = str2.split(" ");
+let lnght = 0;
+let hogya = "";
+for (let i = 0; i &lt; splitStr.length; i++) {
+  if (lnght &lt;= splitStr[i].length) {
+    lnght = splitStr[i].length;
+    hogya = splitStr[i];
+  }
+}
+console.log(hogya);
+    </code></pre>
+  </div>
+
+  <div class="code-block">
+    <h3>POWER FUNCTION:</h3>
+    <pre><code>
+let a = prompt("Enter your number");
+let b = prompt("Enter second number");
+let d = a;
+function power(a, b) {
+  for (let i = 1; i &lt; b; i++) {
+    a *= d;
+  }
+  console.log(a);
+}
+power(a, b);
+    </code></pre>
+  </div>
+
+  <div class="code-block">
+    <h3>LEAP YEAR CHECK:</h3>
+    <pre><code>
+let leapYear = 1996;
+let arrY = [];
+function createLeapYear() {
+  for (let i = 0; i &lt; 11; i++) {
+    leapYear += 4;
+    arrY[i] = leapYear;
+  }
+  return arrY;
+}
+function chk() {
+  createLeapYear();
+  let userInp = +prompt("Enter a year");
+  for (let i = 0; i &lt; arrY.length; i++) {
+    if (userInp === arrY[i]) {
+      alert("bhtreen");
+    }
+  }
+}
+chk();
+    </code></pre>
+  </div>
+
+  <div class="code-block">
+    <h3>AVERAGE AND PERCENTAGE:</h3>
+    <pre><code>
+function mainF() {
+  let si = 76;
+  let ur = 43;
+  let en = 47;
+  function average() {
+    return (si + ur + en) / 3;
+  }
+  function percentage() {
+    return ((si + ur + en) / 200) * 100;
+  }
+  console.log(average().toFixed(2), percentage().toFixed(2) + "%");
+}
+mainF();
+    </code></pre>
+  </div>
+
+  <div class="code-block">
+    <h3>SELF MADE indexOf()</h3>
+    <pre><code>
+let stR = "sadqah";
+let char = "h";
+function karacter() {
+  for (let i = 0; i &lt; stR.length; i++) {
+    if (stR[i] === char) {
+      console.log(i);
+    }
+  }
+}
+karacter();
+    </code></pre>
+  </div>
+
+  <div class="code-block">
+    <h3>REMOVE VOWELS:</h3>
+    <pre><code>
+let alfaz = prompt("Enter a word");
+let ALFAZ = "";
+function vowels() {
+  for (let i = 0; i &lt; alfaz.length; i++) {
+    if (!"aeiou".includes(alfaz[i])) {
+      ALFAZ += alfaz[i];
+    }
+  }
+  console.log("Original:", alfaz);
+  console.log("Without vowels:", ALFAZ);
+}
+vowels();
+    </code></pre>
+  </div>
+
+  <div class="code-block">
+    <h3>COUNT DOUBLE VOWELS:</h3>
+    <pre><code>
+function countConsecutiveVowels(text) {
+  const vowels = "aeiou";
+  let count = 0;
+  for (let i = 0; i &lt; text.length - 1; i++) {
+    let char1 = text[i].toLowerCase();
+    let char2 = text[i + 1].toLowerCase();
+    if (vowels.includes(char1) && vowels.includes(char2)) {
+      count++;
+    }
+  }
+  return count;
+}
+const sentence = "Pleases read this application and give me gratuity";
+console.log("Consecutive vowel pairs:", countConsecutiveVowels(sentence));
+    </code></pre>
+  </div>
+
+  <div class="code-block">
+    <h3>OVERTIME PAY:</h3>
+    <pre><code>
+function calculateOvertimePay(hoursWorked) {
+  const overtimeRate = 12;
+  const regularHours = 40;
+  if (hoursWorked &gt; regularHours) {
+    const overtimeHours = hoursWorked - regularHours;
+    return overtimeHours * overtimeRate;
+  } else {
+    return 0;
+  }
+}
+const hoursWorked = 50;
+console.log("Overtime Pay: Rs.", calculateOvertimePay(hoursWorked));
+    </code></pre>
+  </div>
+
+  <a href="https://github.com/Mohammad-Saad-Aly/SMIT-batch-9/blob/master/JavaScript/Js%20Assignments/39-44_SwitchStatements_While..DoWhile.pdf" target="_blank">
+    View Assignment PDF
+  </a>
+</body>
+</html>

@@ -1,13 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strings</title>
+  <meta charset="UTF-8" />
+  <title>JavaScript Car Practice</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background: #f9f9f9;
+      padding: 20px;
+      color: #333;
+    }
+    h1, h2 {
+      color: #444;
+    }
+    .code-block {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 6px;
+      white-space: pre;
+      overflow-x: auto;
+      margin-bottom: 10px;
+    }
+    button {
+      margin: 10px 0;
+      padding: 8px 14px;
+      font-weight: bold;
+      border: none;
+      background-color: #0077cc;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .output {
+      background: #e6e6e6;
+      padding: 10px;
+      border-radius: 4px;
+      font-family: monospace;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 <body>
-  
 
-  <script src="app.js"></script>
+  <h1>🚗 JavaScript Practice: Cars, Strings, Dates</h1>
+
+  <!-- 1. Search Car with Capitalization -->
+  <h2>1. Search Car with Capitalization</h2>
+  <div class="code-block" id="code1">
+const arr = ['Mehran', 'Audi', 'V8', "Fx", "Foxi", "Khyber", "Alto"];
+const car = prompt("Enter a car name:");
+const formattedCar = car[0].toUpperCase() + car.slice(1).toLowerCase();
+const check = arr.indexOf(formattedCar);
+if (check === -1) {
+  output.innerText = formattedCar + " not found";
+} else {
+  output.innerText = formattedCar + " found!";
+}
+  </div>
+  <button onclick="runCode('code1', 'output1')">Run Code</button>
+  <div class="output" id="output1">Result here...</div>
+
+  <!-- 2. Replace 'and' with '&' -->
+  <h2>2. Replace 'and' with '&'</h2>
+  <div class="code-block" id="code2">
+const msg = 'ali and shafi are best friends. they play football and cricket and fight';
+output.innerText = msg.replaceAll('and', '&');
+  </div>
+  <button onclick="runCode('code2', 'output2')">Run Code</button>
+  <div class="output" id="output2">Result here...</div>
+
+  <!-- 3. Convert string to number -->
+  <h2>3. Convert String to Number</h2>
+  <div class="code-block" id="code3">
+const str = '372';
+const num = Number(str);
+output.innerText = "Type: " + typeof num + ", Value: " + num;
+  </div>
+  <button onclick="runCode('code3', 'output3')">Run Code</button>
+  <div class="output" id="output3">Result here...</div>
+
+  <!-- 4. Count vowels and consonants -->
+  <h2>4. Count Vowels & Consonants in "pakistan"</h2>
+  <div class="code-block" id="code4">
+const str = 'pakistan';
+let vowels = 0;
+for (let i = 0; i < str.length; i++) {
+  if (str[i] === 'a' || str[i] === 'i') vowels++;
+}
+const consonants = str.length - vowels;
+output.innerText = "Vowels: " + vowels + ", Consonants: " + consonants;
+  </div>
+  <button onclick="runCode('code4', 'output4')">Run Code</button>
+  <div class="output" id="output4">Result here...</div>
+
+  <!-- 5. Coercion Example -->
+  <h2>5. Type Coercion Example</h2>
+  <div class="code-block" id="code5">
+let a = 5;
+let result = a++ + 'hello';
+output.innerText = result;
+  </div>
+  <button onclick="runCode('code5', 'output5')">Run Code</button>
+  <div class="output" id="output5">Result here...</div>
+
+  <!-- 6. Logical AND -->
+  <h2>6. Logical AND Evaluation</h2>
+  <div class="code-block" id="code6">
+const result = 'sahi ans' && "false" && "0" && undefined;
+output.innerText = result;
+  </div>
+  <button onclick="runCode('code6', 'output6')">Run Code</button>
+  <div class="output" id="output6">Result here...</div>
+
+  <!-- 7. Convert Number to String -->
+  <h2>7. Convert Number to String</h2>
+  <div class="code-block" id="code7">
+let num = 19;
+let str = num.toString();
+output.innerText = "Type: " + typeof str + ", Value: " + str;
+  </div>
+  <button onclick="runCode('code7', 'output7')">Run Code</button>
+  <div class="output" id="output7">Result here...</div>
+
+  <!-- 8. Replace last digit -->
+  <h2>8. Replace Last Digit "5" with "6"</h2>
+  <div class="code-block" id="code8">
+let num = 15;
+let str = num.toString();
+if (str[str.length - 1] === '5') {
+  str = str.slice(0, -1) + "6";
+}
+output.innerText = "New value: " + str + " (" + Number(str) + ")";
+  </div>
+  <button onclick="runCode('code8', 'output8')">Run Code</button>
+  <div class="output" id="output8">Result here...</div>
+
+  <!-- 9. Current Time -->
+  <h2>9. Show Current Time</h2>
+  <div class="code-block" id="code9">
+const now = new Date().toString();
+output.innerText = now.slice(16, 24); // only time
+  </div>
+  <button onclick="runCode('code9', 'output9')">Run Code</button>
+  <div class="output" id="output9">Result here...</div>
+
+  <script>
+    function runCode(codeId, outputId) {
+      const code = document.getElementById(codeId).innerText;
+      const output = document.getElementById(outputId);
+      try {
+        eval(code);
+      } catch (err) {
+        output.innerText = "❌ Error: " + err.message;
+      }
+    }
+  </script>
 </body>
 </html>

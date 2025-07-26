@@ -180,18 +180,20 @@
 
 function dato(str) {
   // Split the string into an array of words
+  const geth1 = document.querySelector("#h1")
   console.log(str)
   let words = str
+  let vowel = prompt("enter the vowel")
   let longestWord = '';
   for (let i = 0; i < words.length; i++) {
-          if (words[i] == 'o') {
+          if (words[i] == vowel) {
               longestWord++
           }
       }
-  return longestWord
+  geth1.innerHTML = longestWord 
 }
 
-console.log(dato(prompt('enter value')));
+
 
 
 

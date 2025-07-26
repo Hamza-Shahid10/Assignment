@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Quiz App</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #c8cbe9, #7a83ff);
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .quiz-container {
+      max-width: 500px;
+      margin: auto;
+      padding: 15px;
+      border: 2px solid #220909;
+      border-radius: 30px;
+      
+    }
+    .question {
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .options {
+      margin-bottom: 20px;
+      border-radius: 30px; 
+    }
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 5px 0;
+      padding: 10px;
+      cursor: pointer;
+      align-items: center;
+      border-radius: 8px;
+      border: none;
+      text-align: center;
+    }
+    .result {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .btn{
+      background-color:rgb(247, 184, 246);
+      color: block;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s ease;
+    }
+
+  </style>
+</head>
+<body>
+  <h4>Countdown Timer</h4>
+  <div id="timer">45</div> 
+
+  <div class="quiz-container">
+  
+    <div id="quiz">
+      <div class="question" id="questionText"></div>
+      <div class="options" id="optionsContainer"></div>
+      <button class="btn" onclick="nextQuestion()">Next</button>
+      <br><br>
+
+    </div>
+    <div class="result" id="result" style="display: none;"> </div>
+    <button class="btn" onclick="rel()">Reload</button>
+  </div>
+  
+  <script>
+  // const questions = [
+  //   { question: "What is the capital of France?", options: ["Berlin", "Madrid", "Paris", "Rome"], correct: 2 },
+  //   { question: "Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Jupiter", "Venus"], correct: 1 },
+  //   { question: "What is 5 + 3?", options: ["5", "8", "10", "15"], correct: 1 },
+  //   { question: "What is 8 + 3?", options: ["5", "11", "10", "15"], correct: 1 },
+  //   { question: "Which language is used for web apps?", options: ["Python", "PHP", "JavaScript", "All"], correct: 3 },
+  //   { question: "HTML stands for?", options: ["Hyper Trainer Marking Language", "HyperText Markup Language", "HyperText Marketing Language", "None"], correct: 1 },
+  //   { question: "CSS stands for?", options: ["Cascading Style Sheet", "Colorful Style Sheet", "Computer Style Sheet", "Creative Style System"], correct: 0 },
+  //   { question: "Which tag is used to create a hyperlink?", options: ["<link>", "<a>", "<href>", "<hyper>"], correct: 1 },
+  //   { question: "Which one is a JavaScript framework?", options: ["Django", "React", "Laravel", "Flask"], correct: 1 },
+  //   { question: "Which is a valid CSS unit?", options: ["pixels", "px", "inches", "bit"], correct: 1 },
+  //   { question: "What does DOM stand for?", options: ["Document Object Model", "Data Object Management", "Digital Ordinance Model", "None"], correct: 0 },
+  //   { question: "Which is not a programming language?", options: ["HTML", "Python", "C++", "Java"], correct: 0 },
+  //   { question: "Which operator is used for assignment?", options: ["=", "==", "===", "!="], correct: 0 },
+  //   { question: "What is 10 / 2?", options: ["2", "3", "5", "10"], correct: 2 },
+  //   { question: "JavaScript files have extension?", options: [".js", ".jsx", ".java", ".script"], correct: 0 },
+  //   { question: "How to write a comment in HTML?", options: ["// comment", "/* comment */", "<!-- comment -->", "# comment"], correct: 2 },
+  //   { question: "How do you declare a variable in JS?", options: ["variable x;", "v x;", "var x;", "let x"], correct: 2 },
+  //   { question: "Which is used to define styles?", options: ["HTML", "JavaScript", "CSS", "Python"], correct: 2 },
+  //   { question: "How to display alert in JavaScript?", options: ["msg()", "alert()", "prompt()", "display()"], correct: 1 },
+  //   { question: "What is 7 * 6?", options: ["42", "36", "48", "56"], correct: 0 },
+  //   { question: "How do you start a for loop in JS?", options: ["for()", "loop()", "repeat()", "foreach()"], correct: 0 },
+  //   { question: "Which of the following is not JS data type?", options: ["Boolean", "Undefined", "Float", "Number"], correct: 2 },
+  //   { question: "How many days in a leap year?", options: ["365", "366", "364", "360"], correct: 1 },
+  //   { question: "Which HTML tag makes bold text?", options: ["<b>", "<bold>", "<strong>", "<text-bold>"], correct: 0 },
+  //   { question: "Which company developed JavaScript?", options: ["Microsoft", "Sun Microsystems", "Netscape", "Apple"], correct: 2 }
+  // ];
+
+  const questions = [
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: ["Earth", "Mars", "Jupiter", "Venus"],
+    correct: 1
+  },
+  {
+    question: "What is the largest ocean in the world?",
+    options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+    correct: 3
+  },
+  {
+    question: "What gas do plants breathe in that humans and animals breathe out?",
+    options: ["Oxygen", "Hydrogen", "Carbon Dioxide", "Nitrogen"],
+    correct: 2
+  },
+  {
+    question: "How many continents are there in the world?",
+    options: ["5", "6", "7", "8"],
+    correct: 2
+  },
+  {
+    question: "Who discovered gravity when an apple fell on his head?",
+    options: ["Albert Einstein", "Isaac Newton", "Galileo", "Thomas Edison"],
+    correct: 1
+  },
+  {
+    question: "What is the capital of Japan?",
+    options: ["Seoul", "Beijing", "Tokyo", "Bangkok"],
+    correct: 2
+  },
+  {
+    question: "Which is the smallest prime number?",
+    options: ["0", "1", "2", "3"],
+    correct: 2
+  },
+  {
+    question: "What is the hardest natural substance on Earth?",
+    options: ["Gold", "Iron", "Diamond", "Quartz"],
+    correct: 2
+  },
+  {
+    question: "What is the main language spoken in Brazil?",
+    options: ["Spanish", "English", "Portuguese", "French"],
+    correct: 2
+  },
+  {
+    question: "Which country gifted the Statue of Liberty to the USA?",
+    options: ["France", "England", "Germany", "Italy"],
+    correct: 0
+  },
+  {
+    question: "Which instrument has 88 keys?",
+    options: ["Violin", "Flute", "Piano", "Guitar"],
+    correct: 2
+  },
+  {
+    question: "How many sides does a hexagon have?",
+    options: ["5", "6", "7", "8"],
+    correct: 1
+  },
+  {
+    question: "What is H2O commonly known as?",
+    options: ["Oxygen", "Hydrogen", "Water", "Salt"],
+    correct: 2
+  },
+  {
+    question: "Which bird is known for mimicking sounds, including human voices?",
+    options: ["Parrot", "Sparrow", "Eagle", "Crow"],
+    correct: 0
+  },
+  {
+    question: "Which continent is the Sahara Desert located in?",
+    options: ["Asia", "Africa", "Australia", "South America"],
+    correct: 1
+  },
+  {
+    question: "How many degrees are there in a right angle?",
+    options: ["45°", "90°", "180°", "360°"],
+    correct: 1
+  },
+  {
+    question: "What do bees collect from flowers?",
+    options: ["Honey", "Sugar", "Nectar", "Seeds"],
+    correct: 2
+  },
+  {
+    question: "Which organ pumps blood throughout your body?",
+    options: ["Brain", "Liver", "Heart", "Lungs"],
+    correct: 2
+  },
+  {
+    question: "Which planet is the closest to the sun?",
+    options: ["Venus", "Earth", "Mars", "Mercury"],
+    correct: 3
+  },
+  {
+    question: "Who wrote the play 'Romeo and Juliet'?",
+    options: ["William Shakespeare", "Charles Dickens", "Jane Austen", "Mark Twain"],
+    correct: 0
+  },
+  {
+    question: "How many teeth does an adult human have?",
+    options: ["28", "30", "32", "36"],
+    correct: 2
+  },
+  {
+    question: "What is the freezing point of water?",
+    options: ["0°C", "100°C", "32°C", "50°C"],
+    correct: 0
+  },{
+    question: "What color is the sky on a sunny day?",
+    options: ["Green", "Blue", "Red", "Yellow"],
+    correct: 1
+  },
+  {
+    question: "Which animal says 'Moo'?",
+    options: ["Dog", "Cat", "Cow", "Sheep"],
+    correct: 2
+  },
+  {
+    question: "What do you use to brush your teeth?",
+    options: ["Spoon", "Toothbrush", "Pencil", "Fork"],
+    correct: 1
+  },
+  {
+    question: "Which one is a fruit?",
+    options: ["Apple", "Car", "Shoe", "Ball"],
+    correct: 0
+  },
+  {
+    question: "How many legs does a spider have?",
+    options: ["4", "6", "8", "2"],
+    correct: 2
+  },
+  {
+    question: "What do you wear on your feet?",
+    options: ["Shirt", "Pants", "Shoes", "Hat"],
+    correct: 2
+  },
+  {
+    question: "What color is a banana?",
+    options: ["Red", "Yellow", "Purple", "Brown"],
+    correct: 1
+  },
+  {
+    question: "What do you use to see?",
+    options: ["Eyes", "Ears", "Nose", "Mouth"],
+    correct: 0
+  },
+  {
+    question: "What animal is big and gray with a trunk?",
+    options: ["Giraffe", "Elephant", "Lion", "Monkey"],
+    correct: 1
+  },
+  {
+    question: "Which one is used to fly in the sky?",
+    options: ["Car", "Boat", "Airplane", "Train"],
+    correct: 2
+  },
+  {
+    question: "What do you call a scientist who studies rocks?",
+    options: ["Botanist", "Chemist", "Geologist", "Zoologist"],
+    correct: 2
+  },
+  {
+    question: "Which animal is known as the King of the Jungle?",
+    options: ["Tiger", "Lion", "Elephant", "Leopard"],
+    correct: 1
+  },
+  {
+    question: "Which country is famous for the Great Wall?",
+    options: ["India", "China", "Japan", "Russia"],
+    correct: 1
+  },
+  {
+    question: "Which shape has no corners?",
+    options: ["Triangle", "Square", "Circle", "Rectangle"],
+    correct: 2
+  },
+  {
+    question: "What do we call animals that eat only plants?",
+    options: ["Carnivores", "Omnivores", "Herbivores", "Insectivores"],
+    correct: 2
+  },
+  {
+    question: "How many hours are there in a day?",
+    options: ["12", "24", "36", "48"],
+    correct: 1
+  },
+  {
+    question: "Which planet has rings around it?",
+    options: ["Venus", "Saturn", "Mars", "Mercury"],
+    correct: 1
+  },
+  {
+    question: "What is the currency of the United States?",
+    options: ["Euro", "Dollar", "Pound", "Yen"],
+    correct: 1
+  },
+  {
+    question: "Which insect makes honey?",
+    options: ["Butterfly", "Mosquito", "Bee", "Ant"],
+    correct: 2
+  }
+];
+
+
+
+
+    let currentQuestion = 0;
+    let score = 0;
+    let selectedOption = null;
+
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById('questionText').textContent = q.question;
+
+      const optionsContainer = document.getElementById('optionsContainer');
+      optionsContainer.innerHTML = '';
+      q.options.forEach((option, index) => {
+        const btn = document.createElement('button');
+        btn.textContent = option;
+        btn.onclick = () => {
+          selectedOption = index;
+          document.querySelectorAll('.options button').forEach(b => b.style.backgroundColor = '');
+          btn.style.backgroundColor = '#9b2add';
+        };
+        optionsContainer.appendChild(btn);
+        console.log(option, index)
+      });
+    }
+
+    function nextQuestion() {
+      if (selectedOption === null) {
+        alert("Please select an option before proceeding.");
+        return;
+      }
+     
+       if (selectedOption === questions[currentQuestion].correct) {
+        score++;
+      }
+
+      currentQuestion++;
+      selectedOption = null;
+
+      if (currentQuestion < questions.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    //setTimeout(function(){
+  //    function rel(){ 
+//   location.reload();
+ // }, 1000); // Refreshes the page after 5 seconds
+//}
+
+    function showResult() {
+      document.getElementById('quiz').style.display = 'none';
+      const resultText = `You scored ${score} out of ${questions.length}! Percentage is ${(score/questions.length)*100}%`;
+      document.getElementById('result').textContent = resultText;
+      document.getElementById('result').style.display = 'block';
+    }
+
+    loadQuestion();
+    
+    let timeLeft = 400; // seconds
+    const timerElement = document.getElementById('timer');
+
+    const countdown = setInterval(() => {
+      timeLeft--;
+      timerElement.textContent = timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        timerElement.textContent = setTimeout(function(){
+    location.reload();
+    
+    }, 1000);;
+      }
+    }, 1000);
+
+    function rel(){
+      location.reload()
+    }
+  </script>
+</body>
+</html>
+
+
+    

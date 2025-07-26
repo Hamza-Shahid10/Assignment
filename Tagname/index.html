@@ -19,12 +19,19 @@
     <script>
         let getImgs = document.getElementsByTagName('img')
         let div = document.getElementById('div')
+        let newSrc = "https://img.freepik.com/free-vector/realistic-light-bulb-with-electricity_23-2149129410.jpg"
         function imgChange(){
             for(i = 0; i < getImgs.length ; i += 2 ){
-            getImgs[i].src = "https://img.freepik.com/free-vector/realistic-light-bulb-with-electricity_23-2149129410.jpg"
+                if(getImgs[i].src == newSrc){
+                    getImgs[i].src = 'https://media.istockphoto.com/id/185206958/photo/light-bulb.jpg?s=612x612&w=0&k=20&c=uff31Cf5Qy0Rss2OBw7aOysvoDEVKJVk53PrLfzGpBI='
+                    div.style.backgroundColor = 'white'
+                } else {
+                    getImgs[i].src = newSrc
+                    div.style.backgroundColor = 'red'
+                }
+
             }
             console.log(div)
-            div.style.backgroundColor = 'red'
         }
 
         // setAttribute
