@@ -211,7 +211,7 @@
                 <label for="password">Password</label>
                 <div class="password-toggle">
                     <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                    <button type="button" class="toggle-btn" onclick="togglePassword('password')">👁️</button>
+                    <button type="button" class="toggle-btn" onclick="import('/app.js').then(m => m.togglePassword('password'))">👁️</button>
                 </div>
             </div>
             
@@ -229,34 +229,11 @@
         
         <div class="signup-link">
             Don't have an account? <a href="signup.html">Sign Up</a>
+            log in with <button id="gbtn" >Google</button>
         </div>
     </div>
 
-    <script>
-        function togglePassword(inputId) {
-            const input = document.getElementById(inputId);
-            const button = input.nextElementSibling;
-            
-            if (input.type === 'password') {
-                input.type = 'text';
-                button.textContent = '🙈';
-            } else {
-                input.type = 'password';
-                button.textContent = '👁️';
-            }
-        }
+    <script type="module" src="./app.js"></script>
 
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const remember = document.getElementById('remember').checked;
-            
-            // Here you would typically send the data to your server
-            console.log('Login attempt:', { email, password, remember });
-            alert('Login successful!');
-        });
-    </script>
 </body>
 </html> 
