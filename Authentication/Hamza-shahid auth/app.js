@@ -14,21 +14,19 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-//   const togglePassword = document.getElementById('togglePassword')
-//   if(togglePassword){
-//   togglePassword.addEventListener('click', (inputId)=> {
-//     console.log(inputId.srcElement.form.childNodes[5].childNodes[3])
-//     const input = document.getElementById(inputId);
-//     const button = input.nextElementSibling;
-//     if (input.type === 'password') {
-//         input.type = 'text';
-//         button.textContent = '🙈';
-//     } else {
-//         input.type = 'password';
-//         button.textContent = '👁️';
-//     }
-// })
-// }
+export function StogglePassword(inputId) {
+  // console.log(inputId.srcElement.form.childNodes[5].childNodes[3])
+  const input = document.getElementById(inputId);
+  const button = input.nextElementSibling;
+  if (input.type === 'password') {
+    input.type = 'text';
+    button.textContent = '🙈';
+  } else {
+    input.type = 'password';
+    button.textContent = '👁️';
+  }
+}
+
 const getSignup = document.getElementById('signupForm')
 if (getSignup) {
   getSignup.addEventListener('submit', function (e) {
@@ -58,8 +56,6 @@ if (getSignup) {
 
 
 // login.js
-
-// Toggle password visibility
 export function togglePassword(inputId) {
   const input = document.getElementById(inputId);
   const button = input.nextElementSibling;
@@ -94,20 +90,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       console.log('Login attempt:', { email, password, remember });
       alert('Login successful!');
+      window.location.href = "dashboard.html"
+
     });
   }
+
+
   const provider = new GoogleAuthProvider();
   const gBtn = document.getElementById("gbtn")
-  gBtn.addEventListener("click", () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log(result)
-      })
-      .catch((error) => {
-        console.log(error)
-      });
-  })
-
+  if (gBtn) {
+    gBtn.addEventListener("click", () => {
+      console.log("hello salam")
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          console.log(result)
+        })
+        .catch((error) => {
+          console.log(error)
+        });
+    })
+  }
 });
 
 
