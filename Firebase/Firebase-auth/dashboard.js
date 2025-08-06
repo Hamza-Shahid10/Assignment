@@ -81,8 +81,8 @@ async function renderProductCards() {
         <h3>${data.title}</h3>
         <p>${data.description || 'No description'}</p>
         <p><strong>$${data.price}</strong></p>
-        <button class="btn btn-success">edit</button>
-        <button class="btn btn-success" >Delete</button>
+        <button class="btn btn-success mb-3">edit</button>
+        <button class="btn btn-danger" >Delete</button>
       `;
 
       container.appendChild(card);
@@ -95,4 +95,5 @@ async function renderProductCards() {
 
 
 renderProductCards();
+
 
