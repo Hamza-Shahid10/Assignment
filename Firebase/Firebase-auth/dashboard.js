@@ -81,6 +81,8 @@ async function renderProductCards() {
         <h3>${data.title}</h3>
         <p>${data.description || 'No description'}</p>
         <p><strong>$${data.price}</strong></p>
+        <button>edit</button>
+        <button>Delete</button>
       `;
 
       container.appendChild(card);
@@ -90,5 +92,6 @@ async function renderProductCards() {
     container.innerHTML = `<p style="color:red;">Failed to load products.</p>`;
   }
 }
+
 
 renderProductCards();
