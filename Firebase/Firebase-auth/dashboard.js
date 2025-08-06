@@ -61,6 +61,7 @@ productForm.addEventListener('submit', async function (e) {
     
     productForm.reset();
     productModal.hide();
+    window.location.reload()
     // alert('Product added successfully!');
 });
 
@@ -95,5 +96,6 @@ async function renderProductCards() {
 
 
 renderProductCards();
+
 
 
