@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, doc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js"
+import { getFirestore, collection, addDoc, getDocs, doc, getDoc, updateDoc, deleteDoc, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js"
 
 const firebaseConfig = {
   apiKey: "AIzaSyBFp39U0vIOawr6s3vExdrkpWdFEbPFQ-0",
@@ -14,12 +14,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+const sidebarH4 = document.getElementById('sidebar-h4');
 const addProductBtn = document.getElementById('addProductBtn');
+const viewCartBtn = document.getElementById('viewCartBtn');
+const welcomePara1 = document.getElementById('welcome-para-2');
+const welcomePara2 = document.getElementById('welcome-para-1');
 const logoutBtn = document.getElementById('logoutBtn');
 const productForm = document.getElementById('productForm');
 const welcomeMessage = document.getElementById('welcome-message');
 const productModal = new bootstrap.Modal(document.getElementById('productModal'));
-
 
 const authUser = JSON.parse(localStorage.getItem('authUser'));
 if (!authUser) {
@@ -27,13 +30,34 @@ if (!authUser) {
 }
 if (authUser.email !== "hamza@gmail.com") {
   addProductBtn.style.display = 'none';
+  welcomePara2.style.display = 'none';
+  sidebarH4.innerHTML = "Dashboard"
+  welcomePara1.innerText = "Welcome to the Dashboard. 🎉 Glad to have you back — let’s make today awesome!"
 }
+
+const cartQuery = query(
+  collection(db, "cartItems"),
+  where("userEmail", "==", authUser.email)
+);
+onSnapshot(cartQuery, (snapshot) => {
+  const cartCount = snapshot.size;
+  if (viewCartBtn) {
+    viewCartBtn.textContent = `View Cart (${cartCount})`;
+  }
+});
 welcomeMessage.textContent = `Welcome, ${authUser.displayName}!`;
 
+// Logout with SweetAlert
 logoutBtn.addEventListener('click', () => {
-  alert('Logged out!');
-  localStorage.removeItem('authUser');
-  window.location.href = "login.html";
+  Swal.fire({
+    title: 'Logged Out',
+    text: 'You have been logged out successfully!',
+    icon: 'success',
+    confirmButtonText: 'OK'
+  }).then(() => {
+    localStorage.removeItem('authUser');
+    window.location.href = "login.html";
+  });
 });
 
 addProductBtn.addEventListener('click', () => {
@@ -50,29 +74,23 @@ productForm.addEventListener('submit', async function (e) {
     imageUrl: document.getElementById('imageUrl').value.trim()
   };
 
-  if (id) {
-    try {
+  try {
+    if (id) {
       const productRef = doc(db, "products", id);
       await updateDoc(productRef, product);
-      console.log("Product updated:", id);
-      renderProductCards()
-    } catch (e) {
-      console.error("Error updating product: ", e);
+      Swal.fire('Updated!', 'Product updated successfully.', 'success');
+    } else {
+      await addDoc(collection(db, "products"), product);
+      Swal.fire('Added!', 'New product added successfully.', 'success');
     }
-  } else {
-    // Add new
-    try {
-      const docRef = await addDoc(collection(db, "products"), product);
-      console.log("New product added:", docRef.id);
-      renderProductCards()
-    } catch (e) {
-      console.error("Error adding product: ", e);
-    }
+    renderProductCards();
+  } catch (e) {
+    Swal.fire('Error!', 'There was an issue saving the product.', 'error');
+    console.error(e);
   }
 
   productForm.reset();
   productModal.hide();
-  // alert('Product added successfully!');
 });
 
 async function renderProductCards() {
@@ -100,29 +118,28 @@ async function renderProductCards() {
     });
 
     document.querySelectorAll('.edit-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const id = btn.getAttribute('data-id');
-        editProduct(id);
-      });
+      btn.addEventListener('click', () => editProduct(btn.getAttribute('data-id')));
     });
 
     document.querySelectorAll('.delete-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const id = btn.getAttribute('data-id');
-        deleteProduct(id);
-      });
+      btn.addEventListener('click', () => deleteProduct(btn.getAttribute('data-id')));
     });
 
     document.querySelectorAll('.Cart-btn').forEach((btn) => {
       btn.addEventListener('click', async () => {
         const id = btn.getAttribute('data-id');
+
+        // Change button text while adding
+        btn.disabled = true;
+        const originalText = btn.textContent;
+        btn.textContent = "Adding...";
+
         const productRef = doc(db, "products", id);
         const productSnap = await getDoc(productRef);
 
         if (productSnap.exists()) {
           const product = productSnap.data();
 
-          // Add to cartItems collection
           await addDoc(collection(db, "cartItems"), {
             userEmail: authUser.email,
             title: product.title,
@@ -131,25 +148,36 @@ async function renderProductCards() {
             description: product.description
           });
 
-          btn.textContent = "✓ Added";
-          btn.classList.add("added");
+          Swal.fire({
+            title: 'Procduct Added',
+            text: `${product.title || 'item'} added to cart!`,
+            icon: 'success',
+            confirmButtonText: 'View Cart'
+          }).then(() => {
+            window.location.href = "./cart.html";
+          });
+          btn.textContent = "Added ✅";
+
+          // Restore after 1.5s
           setTimeout(() => {
-            btn.textContent = "Add to Cart";
-            btn.classList.remove("added");
+            btn.textContent = originalText;
+            btn.disabled = false;
           }, 1500);
-          window.location.href = "./cart.html"
+
         } else {
-          console.error("Product not found");
+          Swal.fire('Error!', 'Product not found.', 'error');
+          btn.textContent = originalText;
+          btn.disabled = false;
         }
       });
     });
 
+
   } catch (err) {
-    console.error("Error fetching products:", err);
-    container.innerHTML = `<p style="color:red;">Failed to load products.</p>`;
+    Swal.fire('Error!', 'Failed to load products.', 'error');
+    console.error(err);
   }
 }
-
 
 async function editProduct(id) {
   try {
@@ -166,27 +194,36 @@ async function editProduct(id) {
 
       document.getElementById('productModalLabel').innerText = 'Edit Product';
       productModal.show();
-      renderProductCards();
     } else {
-      console.error("No such document!");
+      Swal.fire('Error!', 'No such document!', 'error');
     }
   } catch (e) {
-    console.error("Error editing product: ", e);
+    Swal.fire('Error!', 'There was an issue editing the product.', 'error');
+    console.error(e);
   }
 }
 
 async function deleteProduct(id) {
-  if (confirm('Are you sure you want to delete this product?')) {
-    try {
-      await deleteDoc(doc(db, "products", id));
-      console.log("Product deleted:", id);
-      renderProductCards();
-    } catch (e) {
-      console.error("Error deleting product: ", e);
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "This action will permanently delete the product.",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, delete it!'
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        await deleteDoc(doc(db, "products", id));
+        Swal.fire('Deleted!', 'Product has been deleted.', 'success');
+        renderProductCards();
+      } catch (e) {
+        Swal.fire('Error!', 'Failed to delete product.', 'error');
+        console.error(e);
+      }
     }
-  }
+  });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderProductCards();
-});
+document.addEventListener('DOMContentLoaded', renderProductCards);

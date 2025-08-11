@@ -1,3 +1,6 @@
+// Add SweetAlert2 in your HTML head or before this script
+// <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
@@ -15,7 +18,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 export function StogglePassword(inputId) {
-  // console.log(inputId.srcElement.form.childNodes[5].childNodes[3])
   const input = document.getElementById(inputId);
   const button = input.nextElementSibling;
   if (input.type === 'password') {
@@ -27,40 +29,45 @@ export function StogglePassword(inputId) {
   }
 }
 
-const getSignup = document.getElementById('signupForm')
+// SIGNUP FORM HANDLER
+const getSignup = document.getElementById('signupForm');
 if (getSignup) {
   getSignup.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const fullName = document.getElementById('fullName').value.trim()
-    const email = document.getElementById("semail").value.trim()
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById("semail").value.trim();
     const password = document.getElementById('password').value.trim();
     const confirmPassword = document.getElementById('confirmPassword').value;
 
     if (password !== confirmPassword) {
-      alert('Passwords do not match!');
+      Swal.fire('Oops!', 'Passwords do not match!', 'error');
       return;
     }
+
+    Swal.fire({ title: 'Creating account...', didOpen: () => Swal.showLoading(), allowOutsideClick: false });
 
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         const user = userCredential.user;
-        await updateProfile(user, {
-          displayName: fullName,
+        await updateProfile(user, { displayName: fullName });
+
+        Swal.fire({
+          title: 'Success!',
+          text: 'Account created successfully!',
+          icon: 'success',
+          confirmButtonText: 'Go to Login'
+        }).then(() => {
+          window.location.href = './login.html';
         });
-        console.log(user)
-        alert('Account created successfully!');
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage)
+        Swal.fire('Error', error.message, 'error');
       });
   });
 }
 
-
-// login.js
+// LOGIN PASSWORD TOGGLE
 export function togglePassword(inputId) {
   const input = document.getElementById(inputId);
   const button = input.nextElementSibling;
@@ -74,49 +81,56 @@ export function togglePassword(inputId) {
   }
 }
 
+// LOGIN FORM HANDLER
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('loginForm');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
       const remember = document.getElementById('remember').checked;
+
+      Swal.fire({ title: 'Logging in...', didOpen: () => Swal.showLoading(), allowOutsideClick: false });
 
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
           localStorage.setItem('authUser', JSON.stringify(user));
-          window.location.href = "./dashboard.html"
+
+          Swal.fire({
+            title: 'Welcome!',
+            text: `Hello, ${user.displayName || 'User'}!`,
+            icon: 'success',
+            confirmButtonText: 'Go to Dashboard'
+          }).then(() => {
+            window.location.href = "./dashboard.html";
+          });
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorMessage)
+          Swal.fire('Login Failed', error.message, 'error');
         });
-      // console.log('Login attempt:', { email, password, remember });
-
-      // alert('Login successful!');
-      // window.location.href = "./dashboard.html"
-
     });
   }
 
-
+  // GOOGLE LOGIN
   const provider = new GoogleAuthProvider();
-  const gBtn = document.getElementById("gbtn")
+  const gBtn = document.getElementById("gbtn");
   if (gBtn) {
     gBtn.addEventListener("click", () => {
-      console.log("hello salam")
       signInWithPopup(auth, provider)
         .then((result) => {
-          console.log(result)
+          Swal.fire({
+            title: 'Welcome!',
+            text: `Logged in as ${result.user.displayName || 'User'}`,
+            icon: 'success'
+          });
+          localStorage.setItem('authUser', JSON.stringify(result.user));
+          window.location.href = "./dashboard.html";
         })
         .catch((error) => {
-          console.log(error)
+          Swal.fire('Google Login Failed', error.message, 'error');
         });
-    })
+    });
   }
 });
-
-
