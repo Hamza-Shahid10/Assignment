@@ -1,0 +1,31 @@
+variable
+
+ 
+    var age =30
+    age=35
+
+    alert (age)
+    var dateOfYear = 2023 + age
+   
+    vatiable is a container where values are stored to be reused later.
+    variable wo jaga hai jaha values beth ti hai take agye use krsakein
+
+alert('hey')//string
+both are string '"'
+
+rule of math and algebra "BODMAS"(Brackets,orders,divide,mulyiply,addition,subtraction)
+
+ var result = 10 * (10-10) * 10 + 10 
+
+var result = 10 * 10 - 10 * 10 / 5 + 10
+
+10 * 10 - 10 * 2 + 10
+100 - 20 + 10 
+100 - 30 
+70 ANs
+
+var result = - 10 - 10 * 2
+- 10 - 10 * 2
+- 10 - 20
+- 30
+

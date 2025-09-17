@@ -1,0 +1,51 @@
+/* #nav1{
+    position: fixed;
+ left: 10;
+ right: 10;
+ 
+  
+} */
+ /* #a1{
+    padding: 10px; 
+    text-align: center;
+ } */
+/* 
+
+#section {
+   padding: 100px 20px 50px; 
+   Adjusted padding for sections with fixed header
+   text-align: center;
+} */
+
+/* #see{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: xx-large;
+
+ }
+ */
+
+/* Default height for small devices */
+#intro-example {
+height: 400px;
+}
+
+/* Height for devices larger than 992px */
+@media (min-width: 992px) {
+#intro-example {
+   height: 600px;
+}
+}
+
+
+/* .navbar{
+   position: fixed;
+   top:0;
+   width: 100%;
+} */
+
+
+
+#chaman{
+   font-size: xx-large;
+   padding-top: 15px;
+}

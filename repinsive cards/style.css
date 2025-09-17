@@ -1,0 +1,50 @@
+body{
+    background-color: rgb(247, 179, 254);
+}
+
+
+
+h1{
+    font-weight: bolder;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+
+.box{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 18 columns for the periodic table */
+    grid-gap: 20px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+
+.messi{
+      border: 2px solid black;
+      background-color: aquamarine;
+      font-family: 'rob';
+}
+
+.cr{
+    border: 3px solid black;
+    background-color: aquamarine;
+    background-image: linear-gradient(to right, #DB0030 , #004D98);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.ney{
+    border: 2px solid black;
+    background-color: aquamarine;
+}
+
+img{
+    width: 25%;
+    margin-bottom: -15px;
+}
+
+@font-face {
+    font-family: 'rob';
+    src: url('../rob/Roboto-Regular.ttf');
+}
