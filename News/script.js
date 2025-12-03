@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // API configuration
-    const apiKey = 'f2718e9491b746d6b72112afbdee1d5c';
+    const apiKey = '47f68f30fbd24320b6b79a5acd2a26e1';
     const apiUrl = 'https://newsapi.org/v2/everything?q=pakistan&from=2025-03-12&sortBy=publishedAt&apiKey=' + apiKey;
     
     let currentPage = 1;
@@ -159,3 +159,4 @@ document.addEventListener('DOMContentLoaded', function() {
     init();
 
 });
+
