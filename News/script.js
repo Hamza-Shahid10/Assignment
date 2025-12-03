@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // API configuration
     const apiKey = 'f2718e9491b746d6b72112afbdee1d5c';
-    const apiUrl = 'https://newsapi.org/v2/everything?q=pakistan&from=2025-25-07&sortBy=publishedAt&apiKey=' + apiKey;
+    const apiUrl = 'https://newsapi.org/v2/everything?q=pakistan&from=2025-03-12&sortBy=publishedAt&apiKey=' + apiKey;
     
     let currentPage = 1;
     const pageSize = 9; // Number of articles per page
@@ -157,4 +157,5 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize the page
     init();
+
 });
