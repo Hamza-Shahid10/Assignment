@@ -1,0 +1,175 @@
+
+@media only screen and (min-width:601px) {
+    body{
+
+    display: none;
+}
+}
+
+
+@media only screen and (max-width:600px) {
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        text-decoration: none;
+        list-style: none;
+    }
+
+    .home{
+        background-color: rgb(0, 0, 0);
+        color: whitesmoke;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        
+        padding: 12% 8%;
+        width: 100%;
+        min-height: 60vh;
+    }
+
+    .home-content h3{
+        font-size: 8vmin;
+    }
+    
+    .home-content h1{
+        font-size: 10vmin;
+        line-height: 1.2;
+    }
+    
+    .home-content p{
+        font-size: 6vmin;
+    }
+
+    .btn-box{
+        width: 100%;
+        padding-top: 6%;
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        gap:2em ;
+    }
+    
+    .btn-1{
+        padding: 10px 20px;
+        /* max-width: 50%; */
+        background-color: rgb(238, 0, 0);
+        color: white;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        font-size: 5vmin;
+        letter-spacing: 1px;
+        /* font-weight: 200; */
+        transition: 0.3s ease;
+        cursor:pointer;
+    }
+    
+    .btn-1:hover{
+        background-color: white;
+        color: black;
+        border: 2px solid black;
+        
+    }
+    .btn-2{
+        padding: 10px 20px;
+        background-color:rgb(255, 16, 16);
+        color: black;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        font-size: 5vmin;
+        letter-spacing: 1px;
+        font-weight: bolder;
+        transition: 0.3s ease;
+    }
+    
+    .btn-2:hover{
+        background-color: white;
+        color:rgb(255, 16, 16);
+    }
+
+    .about{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12% 8%;
+        gap: 10em;
+        background-color: rgb(246, 0, 0);
+        color: black;   
+    }
+    
+    .about-img{
+        display:none
+      }
+       
+    .about-content h2{
+        text-align: left;
+        /* color: white; */
+        font-size: 42px;
+    }
+    
+    .about-content h3{
+        font-size: 62px;
+        /* color: white; */
+    }
+    
+    .about-content p{
+        /* color: white; */
+        font-size: 22px;
+        margin: 0 0 3em;
+    }
+    .about-content button{
+        width: 100%;
+        padding: 10px 20px;
+        font-size: 5vmin;
+        border: 2px solid black;
+    }
+    
+    .procol{
+       min-height:80vh;
+        background: rgb(0, 0, 0);
+        color: whitesmoke
+    }
+    
+    .pro{
+        margin: auto; 
+        max-width: 80%;
+        padding-top: 25px;
+        padding-bottom: 20px;
+    }
+ 
+    .cont{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* 18 columns for the periodic table */
+        grid-gap:3em;
+        max-width: 80%;
+        margin: auto;
+    }
+
+    .cr{
+        border: 3px solid rgb(255, 0, 0);
+        background-color: rgb(2, 2, 2);
+        border-radius: 10px;
+        padding: 15px;
+        color: white;
+    }
+
+    .cr>img{
+        width: 40%;
+    }
+
+    
+    .foot{
+        text-align: center;
+        background: black;
+        color: rgb(255, 255, 255);
+        width: 100%;
+        padding: 15px;
+        font-size:20px;
+    }
+
+
+
+}

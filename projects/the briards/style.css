@@ -1,0 +1,22 @@
+h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 75px;
+    color: aqua;
+    text-shadow: 5px 5px 2px grey;
+}
+
+
+h3{
+    font-family:Helvetica, sans-serif;
+    color: aqua;
+    }
+
+#abc{
+    color: aqua;
+}    
+
+
+h2{font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    color: aqua;;
+}

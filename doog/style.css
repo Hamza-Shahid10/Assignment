@@ -1,0 +1,47 @@
+.cont{
+      width: 70%;
+      font-weight: bolder;
+}
+
+.pd{
+    text-align: left;
+}
+
+table{
+    width: 46%; /* Increase width of the table */
+    border-collapse: collapse; /* For cleaner borders */
+    font-size: 18px; /* Increase font size */
+    align-items: center;
+    border-radius: 5px ;
+}
+th, td {
+    padding: 15px; /* Increase padding for more space in cells */
+    text-align: left; /* Align text to the left */
+}
+th {
+    background-color: #f2ffe2; /* Light grey background for headers */
+}
+td {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 15px; /* Increase padding for more space in cells */
+    background-color: #f9f9f9; /* Slightly different background for data */
+}
+table, th, td {
+    border: 2px solid black; /* Increase the thickness of the border */
+}
+
+a{
+text-decoration: none;
+color: rgb(175, 101, 245);
+}
+
+
+h3{
+    padding-left: 5px;
+    background-color: lightblue;
+    color: blue;
+}
+
+p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

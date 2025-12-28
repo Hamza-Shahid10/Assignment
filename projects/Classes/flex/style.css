@@ -1,0 +1,35 @@
+/*  flex box */
+/*.parent{
+height: 90vh;
+width: 98vw;
+background-color: aqua;
+display: flex;
+flex-direction: column;
+justify-content: space-between; 
+align-items: center; } */ /*vertical alignment*/
+
+/* flex-start
+flex-end
+centre */
+ /*horizontal alignment*/
+
+/* space-between for spaces between boxes
+ space along for top and bottom margin gap */
+
+
+
+.red{
+    background-color: red;
+    flex:2;
+    display: flex;
+    color: white;
+
+}
+.blue{
+    background-color: blue;
+    flex:10;
+}
+.purple{
+    background-color: purple;
+    flex:2;
+}
